@@ -6,8 +6,10 @@ import ParticleBackground from './components/ParticleBackground';
 import FreeAI from './components/FreeAI';
 import About from './components/About';
 import PremiumPlans from './components/PremiumPlans';
+import ExpertConsultancy from './components/ExpertConsultancy';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Services from './components/Services';
 
 function App() {
   return (
@@ -17,8 +19,10 @@ function App() {
       <Hero />
       <HowItWorks />
       <FreeAI/>
+      <Services/>
       <About/>
       <PremiumPlans/>
+      <ExpertConsultancy/>
       <Contact/>
       <Footer/>
     </div>

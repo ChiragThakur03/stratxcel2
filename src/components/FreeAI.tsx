@@ -27,7 +27,7 @@ const FreeAI: React.FC = () => {
   // ];
 
   return (
-    <section id="free-ai" className="relative z-10 py-20 px-6 lg:px-8">
+    <section id="free-consultancy" className="relative z-10 py-20 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-sm font-medium mb-6">

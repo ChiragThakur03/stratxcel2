@@ -51,6 +51,49 @@
     0% { transform: translate(0, 0); }
     100% { transform: translate(20px, 20px); }
   }
+  
+  .animate-pixel-transition {
+    animation: pixelTransition 0.1s ease-out;
+  }
+  
+  @keyframes pixelTransition {
+    0% { transform: translateY(0px); }
+    25% { transform: translateY(-2px); }
+    50% { transform: translateY(1px); }
+    75% { transform: translateY(-1px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .pixel-scroll-animation {
+    animation: pixelScroll 0.5s ease-out;
+  }
+  
+  @keyframes pixelScroll {
+    0% { transform: translateY(0px) scale(1); }
+    10% { transform: translateY(-4px) scale(1.001); }
+    20% { transform: translateY(2px) scale(0.999); }
+    30% { transform: translateY(-3px) scale(1.002); }
+    40% { transform: translateY(1px) scale(0.998); }
+    50% { transform: translateY(-2px) scale(1.001); }
+    60% { transform: translateY(3px) scale(0.999); }
+    70% { transform: translateY(-1px) scale(1.002); }
+    80% { transform: translateY(2px) scale(0.998); }
+    90% { transform: translateY(-1px) scale(1.001); }
+    100% { transform: translateY(0px) scale(1); }
+  }
+  
+  .pixel-scroll {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    filter: contrast(1.1) brightness(1.05);
+  }
+  
+  .pixel-scroll * {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
 }
 
 /* Scrollbar Styling */

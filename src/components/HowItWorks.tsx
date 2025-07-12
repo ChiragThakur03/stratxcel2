@@ -34,7 +34,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div ref={containerRef} className="relative min-h-screen">
+    <div id="how-it-works" ref={containerRef} className="relative min-h-screen">
       {/* Header Section */}
       <div className="sticky top-0 h-screen flex items-center justify-center">
         <div className="text-center z-10">
