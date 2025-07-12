@@ -34,9 +34,9 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div ref={containerRef} className="relative bg-black min-h-screen">
+    <div ref={containerRef} className="relative min-h-screen">
       {/* Header Section */}
-      <div className="sticky top-0 h-screen flex items-center justify-center bg-black">
+      <div className="sticky top-0 h-screen flex items-center justify-center">
         <div className="text-center z-10">
           <motion.h2 
             className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8"
@@ -89,7 +89,7 @@ const HowItWorks = () => {
           <div key={index} className="sticky top-0 h-screen flex items-center justify-center">
             <motion.div
               style={{
-                background: `linear-gradient(135deg, #ec4899, #8b5cf6, #3b82f6)`,
+                background: `linear-gradient(135deg,rgb(151, 6, 196), rgb(33, 57, 95),rgb(3, 22, 53))`,
                 scale,
                 top: `calc(-5vh + ${index * 25}px)`
               }}
@@ -134,7 +134,7 @@ const HowItWorks = () => {
                   </div>
 
                   {/* Floating Elements */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  {/* <div className="absolute inset-0 flex items-center justify-center">
                     <div className="relative">
                       {[...Array(6)].map((_, i) => (
                         <motion.div
@@ -156,10 +156,10 @@ const HowItWorks = () => {
                             ease: "easeInOut"
                           }}
                         />
-                      ))}
+                      ))} */}
                       
                       {/* Central Icon */}
-                      <motion.div 
+                      {/* <motion.div 
                         className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30"
                         animate={{
                           rotate: [0, 360],
@@ -173,7 +173,7 @@ const HowItWorks = () => {
                         <Icon className="w-12 h-12 text-white" />
                       </motion.div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Progress Indicator */}
                   <div className="absolute bottom-4 left-4 right-4">
