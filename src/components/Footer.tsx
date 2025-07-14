@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
     product: [
       { label: 'Free AI Consultancy', id: 'free-ai' },
       { label: 'Premium Plans', id: 'premium' },
-      { label: 'Expert Consultancy', id: 'expert' },
+      { label: 'Expert Consultancy', id: 'expert-consultancy' },
       { label: 'API Access', href: '#' }
     ],
     company: [
@@ -38,17 +38,17 @@ const Footer: React.FC = () => {
   };
 
   const socialLinks = [
-    { icon: <Twitter className="w-5 h-5" />, href: '#', label: 'Twitter' },
-    { icon: <Linkedin className="w-5 h-5" />, href: '#', label: 'LinkedIn' },
-    { icon: <Github className="w-5 h-5" />, href: '#', label: 'GitHub' },
-    { icon: <Mail className="w-5 h-5" />, href: '#', label: 'Email' }
+    { icon: <Twitter className="w-4 h-4 sm:w-5 sm:h-5" />, href: '#', label: 'Twitter' },
+    { icon: <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />, href: '#', label: 'LinkedIn' },
+    { icon: <Github className="w-4 h-4 sm:w-5 sm:h-5" />, href: '#', label: 'GitHub' },
+    { icon: <Mail className="w-4 h-4 sm:w-5 sm:h-5" />, href: '#', label: 'Email' }
   ];
 
   return (
     <footer className="relative z-10 bg-gray-900/50 backdrop-blur-sm border-t border-gray-700/50">
-      <div className="max-w-7xl mx-auto px-6 py-16 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 mb-8 sm:mb-12"
           initial="hidden"
           whileInView="visible"
           variants={{
@@ -59,30 +59,30 @@ const Footer: React.FC = () => {
         >
           {/* Brand */}
           <motion.div
-            className="lg:col-span-2"
+            className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-2"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center space-x-2 mb-6">
+            <div className="flex items-center space-x-2 mb-4 sm:mb-6">
               <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-white" />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
+                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-500 rounded-full blur-md opacity-50"></div>
               </div>
-              <span className="text-xl font-bold text-white">Stratxcel.AI</span>
+              <span className="text-lg sm:text-xl font-bold text-white">Stratxcel.AI</span>
             </div>
-            <p className="text-gray-400 mb-6 max-w-sm">
+            <p className="text-gray-400 mb-4 sm:mb-6 max-w-sm text-sm sm:text-base leading-relaxed">
               Transform your business with AI-powered strategy. From instant insights to expert consultation — your complete business strategy solution.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 sm:space-x-4">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 bg-gray-800 hover:bg-purple-600 rounded-full flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200"
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-purple-600 rounded-full flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200 active:scale-95"
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -93,26 +93,27 @@ const Footer: React.FC = () => {
 
           {/* Product Links */}
           <motion.div
+            className="col-span-1"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-white font-semibold mb-4">Product</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Product</h3>
+            <ul className="space-y-2 sm:space-y-3">
               {footerLinks.product.map((link, index) => (
                 <li key={index}>
                   {link.id ? (
                     <button
                       onClick={() => scrollToSection(link.id)}
-                      className="text-gray-400 hover:text-white transition-colors duration-200 text-left"
+                      className="text-gray-400 hover:text-white transition-colors duration-200 text-left text-xs sm:text-sm leading-relaxed"
                     >
                       {link.label}
                     </button>
                   ) : (
                     <a
                       href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-200"
+                      className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm leading-relaxed"
                     >
                       {link.label}
                     </a>
@@ -124,26 +125,27 @@ const Footer: React.FC = () => {
 
           {/* Company Links */}
           <motion.div
+            className="col-span-1"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-white font-semibold mb-4">Company</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Company</h3>
+            <ul className="space-y-2 sm:space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
                   {link.id ? (
                     <button
                       onClick={() => scrollToSection(link.id)}
-                      className="text-gray-400 hover:text-white transition-colors duration-200 text-left"
+                      className="text-gray-400 hover:text-white transition-colors duration-200 text-left text-xs sm:text-sm leading-relaxed"
                     >
                       {link.label}
                     </button>
                   ) : (
                     <a
                       href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-200"
+                      className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm leading-relaxed"
                     >
                       {link.label}
                     </a>
@@ -155,18 +157,19 @@ const Footer: React.FC = () => {
 
           {/* Resources Links */}
           <motion.div
+            className="col-span-1"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-white font-semibold mb-4">Resources</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Resources</h3>
+            <ul className="space-y-2 sm:space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm leading-relaxed"
                   >
                     {link.label}
                   </a>
@@ -177,18 +180,19 @@ const Footer: React.FC = () => {
 
           {/* Legal Links */}
           <motion.div
+            className="col-span-1"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-white font-semibold mb-4">Legal</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Legal</h3>
+            <ul className="space-y-2 sm:space-y-3">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm leading-relaxed"
                   >
                     {link.label}
                   </a>
@@ -200,17 +204,17 @@ const Footer: React.FC = () => {
 
         {/* Newsletter */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start lg:items-center mb-8 sm:mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-2">
+          <div className="mb-4 lg:mb-0">
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
               Stay Updated
             </h3>
-            <p className="text-gray-300">
+            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
               Get the latest insights on AI-powered business strategy delivered to your inbox.
             </p>
           </div>
@@ -218,24 +222,29 @@ const Footer: React.FC = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors"
+              className="flex-1 px-3 py-2.5 sm:px-4 sm:py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
             />
-            <button className="px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-purple-700 transition-all duration-200 whitespace-nowrap">
+            <button className="px-4 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-purple-700 transition-all duration-200 whitespace-nowrap text-sm sm:text-base active:scale-95">
               Subscribe
             </button>
           </div>
         </motion.div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-700/50 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
+        <motion.div
+          className="pt-6 sm:pt-8 border-t border-gray-700/50 flex flex-col sm:flex-row justify-between items-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-left">
             © 2024 Stratxcel.AI. All rights reserved.
           </p>
-          <div className="flex items-center space-x-6 text-sm text-gray-400">
-            <span>Made with ❤️ by TRUSTING BRAINS</span>
-            <span>•</span>
+          <div className="flex items-center space-x-3 sm:space-x-6 text-xs sm:text-sm text-gray-400">
+            <span className="text-center">Made with ❤️ by TRUSTING BRAINS</span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
