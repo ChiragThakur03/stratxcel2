@@ -15,16 +15,20 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       <ParticleBackground/>
-      <Navbar />
-      <Hero />
-      <HowItWorks />
-      <FreeAI/>
-      <Services/>
-      <About/>
-      <PremiumPlans/>
-      <ExpertConsultancy/>
-      <Contact/>
-      <Footer/>
+      <div className="flex">
+        <Navbar />
+        <div className="flex-1 w-full md:pl-56">
+          <Hero />
+          <HowItWorks />
+          <FreeAI/>
+          <Services/>
+          <About/>
+          <PremiumPlans/>
+          <ExpertConsultancy/>
+          <Contact/>
+          <Footer/>
+        </div>
+      </div>
     </div>
   );
 }

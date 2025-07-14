@@ -84,7 +84,7 @@ const Services: React.FC = () => {
                 pin: true,
                 anticipatePin: 1,
                 onUpdate: (self) => {
-                    const rotation = -180 * self.progress; // Reduced from -317 to -180 for slower rotation
+                    const rotation = -360 * self.progress; // Changed from -180 to -360 for full rotation
                     gsap.set(carouselRef.current, { rotateY: rotation });
                 },
             });

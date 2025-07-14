@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, MessageSquare, Clock, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -71,7 +72,13 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="relative z-10 py-20 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          viewport={{ once: true }}
+        >
           <div className="inline-flex items-center px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-sm font-medium mb-6">
             <MessageSquare className="w-4 h-4 mr-2" />
             Get In Touch
@@ -84,11 +91,17 @@ const Contact: React.FC = () => {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Ready to transform your business? Get in touch with our team and let's discuss how we can help you achieve your strategic goals.
           </p>
-        </div>
+        </motion.div>
 
+        {/* Side-by-side layout for form and contact info */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-          {/* Contact Form */}
-          <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8">
+          <motion.div
+            className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            viewport={{ once: true }}
+          >
             <h3 className="text-2xl font-bold text-white mb-6">
               Send us a message
             </h3>
@@ -162,37 +175,38 @@ const Contact: React.FC = () => {
                 <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
             </form>
-          </div>
+          </motion.div>
 
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-6">
-                Get in touch
-              </h3>
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="text-green-400 mt-1">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-white mb-1">
-                        {info.title}
-                      </h4>
-                      <p className="text-green-400 font-medium mb-1">
-                        {info.details}
-                      </p>
-                      <p className="text-gray-400 text-sm">
-                        {info.description}
-                      </p>
-                    </div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-bold text-white mb-6">
+              Get in touch
+            </h3>
+            <div className="space-y-6">
+              {contactInfo.map((info, index) => (
+                <div key={index} className="flex items-start space-x-4">
+                  <div className="text-green-400 mt-1">
+                    {info.icon}
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-1">
+                      {info.title}
+                    </h4>
+                    <p className="text-green-400 font-medium mb-1">
+                      {info.details}
+                    </p>
+                    <p className="text-gray-400 text-sm">
+                      {info.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-500/30 rounded-xl p-6">
+            <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-500/30 rounded-xl p-6 mt-8">
               <h4 className="text-xl font-semibold text-white mb-4">
                 Need immediate help?
               </h4>
@@ -204,27 +218,46 @@ const Contact: React.FC = () => {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* FAQ Section */}
-        <div>
-          <h3 className="text-3xl font-bold text-white text-center mb-12">
-            Frequently Asked Questions
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 hover:border-green-500/50 transition-all duration-300">
-                <h4 className="text-lg font-semibold text-white mb-3">
-                  {faq.question}
-                </h4>
-                <p className="text-gray-400">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <motion.h3
+          className="text-3xl font-bold text-white text-center mb-12 mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          viewport={{ once: true }}
+        >
+          Frequently Asked Questions
+        </motion.h3>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } }
+          }}
+          viewport={{ once: true }}
+        >
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 hover:border-green-500/50 transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-lg font-semibold text-white mb-3">
+                {faq.question}
+              </h4>
+              <p className="text-gray-400">
+                {faq.answer}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
