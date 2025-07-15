@@ -2,6 +2,10 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Brain, Zap, Target, Users } from 'lucide-react';
+import image1 from '../assets/image1.png';
+import image2 from '../assets/image2.png';
+import image3 from '../assets/image3.png';
+import image4 from '../assets/image4.png';
 
 const HowItWorks = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -32,6 +36,8 @@ const HowItWorks = () => {
       description: "Access to verified industry experts for specialized consultation. Connect with seasoned professionals who can provide human insight to complement our AI-powered recommendations.",
     }
   ];
+
+  const images = [image1, image2, image3, image4];
 
   return (
     <div ref={containerRef} className="relative bg-black min-h-screen ">
@@ -118,75 +124,15 @@ const HowItWorks = () => {
 
               {/* Visual Section */}
               <div className="flex-1 relative hidden sm:block">
-                <div className="absolute inset-0 bg-black/20 rounded-2xl backdrop-blur-sm overflow-hidden border border-white/20">
-                  {/* Animated Tech Pattern */}
-                  <div className="absolute inset-0 opacity-30">
-                    <div 
-                      className="absolute inset-0 animate-tech-grid"
-                      style={{
-                        backgroundImage: `
-                          linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                          linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-                        `,
-                        backgroundSize: '20px 20px'
-                      }}
-                    />
-                  </div>
-
-                  {/* Floating Elements */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative">
-                      {[...Array(6)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          className="absolute w-4 h-4 bg-white/30 rounded-full"
-                          style={{
-                            left: `${(i % 3) * 60 - 60}px`,
-                            top: `${Math.floor(i / 3) * 60 - 30}px`,
-                          }}
-                          animate={{
-                            y: [0, -20, 0],
-                            opacity: [0.3, 0.8, 0.3],
-                            scale: [1, 1.2, 1]
-                          }}
-                          transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            delay: i * 0.3,
-                            ease: "easeInOut"
-                          }}
-                        />
-                      ))}
-
-                      {/* Central Icon */}
-                      <motion.div 
-                        className="w-20 h-20 sm:w-24 sm:h-24 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30"
-                        animate={{
-                          rotate: [0, 360],
-                          scale: [1, 1.1, 1]
-                        }}
-                        transition={{
-                          rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                          scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                        }}
-                      >
-                        <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
-                      </motion.div>
-                    </div>
-                  </div>
-
+                <div className="absolute inset-0 bg-black/20 rounded-2xl  overflow-hidden border border-white/20">
+                  {/* Image replacing Animated Tech Pattern */}
+                  <img
+                    src={images[index]}
+                    alt="How it works visual"
+                    className="absolute inset-0 w-full h-full object-cover opacity-70"
+                  />
                   {/* Progress Indicator */}
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="w-full h-1 bg-white/20 rounded-full overflow-hidden">
-                      <motion.div 
-                        className="h-full bg-white/60"
-                        style={{
-                          scaleX: useTransform(scrollYProgress, [index * 0.25, (index + 1) * 0.25], [0, 1]),
-                          originX: 0
-                        }}
-                      />
-                    </div>
-                  </div>
+                 
                 </div>
               </div>
 
