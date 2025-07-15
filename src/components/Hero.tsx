@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-0">
       {/* Spline Background */}
       <div className="absolute inset-0 z-0">
         <Spline 
@@ -41,11 +41,11 @@ const Hero: React.FC = () => {
             <div>
               <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-purple-500/10 rounded-full border border-purple-500/20 mb-4 sm:mb-6">
                 <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400 mr-1.5 sm:mr-2" />
-                <span className="text-purple-300 text-xs sm:text-sm font-medium">
+                <span className="text-purple-300 text-[clamp(10px,3vw,14px)] font-medium">
                   AI-Powered Business Strategy
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 sm:mb-6">
+              <h1 className="text-[clamp(28px,7vw,64px)] font-bold leading-tight mb-4 sm:mb-6">
                 <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500 bg-clip-text text-transparent block">
                   Transform Your Business
                 </span>
@@ -53,20 +53,20 @@ const Hero: React.FC = () => {
                   with AI-Powered Strategy
                 </span>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-xs sm:max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-[clamp(14px,3.5vw,20px)] text-gray-300 mb-6 sm:mb-8 max-w-xs sm:max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 From instant AI insights to expert human consultation — your complete business strategy solution.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className="group w-full sm:w-auto bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 flex items-center justify-center active:scale-95"
+                  className="group w-full sm:w-auto bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-[clamp(14px,3.5vw,18px)] font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 flex items-center justify-center active:scale-95"
                 >
                   Start Free Consultation
                   <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
                 <button 
                   onClick={() => scrollToSection('premium')}
-                  className="w-full sm:w-auto border-2 border-purple-400 text-purple-300 hover:text-white hover:bg-purple-500/10 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95"
+                  className="w-full sm:w-auto border-2 border-purple-400 text-purple-300 hover:text-white hover:bg-purple-500/10 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-[clamp(14px,3.5vw,18px)] font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95"
                 >
                   View Premium Plans
                 </button>
@@ -105,13 +105,13 @@ const Hero: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl blur-2xl"></div>
-            <iframe
+            {/* <iframe
               src="https://my.spline.design/robotfollowcursorforlandingpagemc-Owr5wEPjXCOYVI1Hru0naen0"
               className="w-full h-full scale-[0.8] sm:scale-[1] relative z-10 rounded-2xl"
               frameBorder="0"
               allowFullScreen
               title="Interactive 3D Robot Mobile"
-            />
+            /> */}
           </motion.div>
         </div>
       </div>

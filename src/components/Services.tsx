@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Globe, ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,6 +58,7 @@ const Services: React.FC = () => {
     const [selectedCard, setSelectedCard] = useState<null | typeof CARDS[0]>(null);
     const [isMobile, setIsMobile] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
+    const navigate = useNavigate();
 
     // Check if mobile device
     useEffect(() => {
@@ -206,7 +208,7 @@ const Services: React.FC = () => {
     );
 
     return (
-        <section id="services" className="relative z-10 py-12 md:py-20 px-4 md:px-6 lg:px-8">
+        <section id="services" className="relative z-10 py-12 md:py-20 px-4 md:px-6 lg:px-8 ">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-8 md:mb-16">
                     <div className="inline-flex items-center px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-blue-300 text-sm font-medium mb-4 md:mb-6">
@@ -325,6 +327,15 @@ const Services: React.FC = () => {
                         </div>
                     </div>
                 )}
+                {/* Explore All Services Button */}
+                <div className="flex justify-center mt-12">
+                    <button
+                        onClick={() => navigate('/services')}
+                        className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-200 text-lg md:text-xl active:scale-95"
+                    >
+                        Explore All Services
+                    </button>
+                </div>
             </div>
         </section>
     );

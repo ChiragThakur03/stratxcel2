@@ -19,7 +19,6 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Form submitted:', formData);
   };
 
@@ -84,29 +83,27 @@ const Contact: React.FC = () => {
             <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
             Get In Touch
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
             <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
               Contact Us
             </span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-lg md:text-xl text-gray-300 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto leading-snug sm:leading-relaxed">
             Ready to transform your business? Get in touch with our team and let's discuss how we can help you achieve your strategic goals.
           </p>
         </motion.div>
 
-        {/* Contact Form and Info */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 mb-16 sm:mb-20">
-          {/* Contact Form */}
+        {/* Form and Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 md:gap-12 mb-16 sm:mb-20">
+          {/* Form */}
           <motion.div
-            className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl sm:rounded-2xl p-6 sm:p-8 order-2 lg:order-1"
+            className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-xl sm:rounded-2xl p-5 sm:p-8 order-2 lg:order-1"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">
-              Send us a message
-            </h3>
+            <h3 className="text-lg sm:text-2xl font-bold text-white mb-4 sm:mb-6">Send us a message</h3>
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
@@ -119,7 +116,7 @@ const Contact: React.FC = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all text-sm sm:text-base"
+                    className="w-full px-3 py-2 text-sm sm:text-base sm:px-4 sm:py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
                     placeholder="John Doe"
                     required
                   />
@@ -134,7 +131,7 @@ const Contact: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all text-sm sm:text-base"
+                    className="w-full px-3 py-2 text-sm sm:text-base sm:px-4 sm:py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
                     placeholder="john@company.com"
                     required
                   />
@@ -150,7 +147,7 @@ const Contact: React.FC = () => {
                   name="company"
                   value={formData.company}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2.5 sm:px-4 sm:py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all text-sm sm:text-base"
+                  className="w-full px-3 py-2 text-sm sm:text-base sm:px-4 sm:py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
                   placeholder="Your Company"
                 />
               </div>
@@ -164,7 +161,7 @@ const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full px-3 py-2.5 sm:px-4 sm:py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all resize-none text-sm sm:text-base"
+                  className="w-full px-3 py-2 text-sm sm:text-base sm:px-4 sm:py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-none"
                   placeholder="Tell us about your business and how we can help..."
                   required
                 ></textarea>
@@ -179,7 +176,7 @@ const Contact: React.FC = () => {
             </form>
           </motion.div>
 
-          {/* Contact Information */}
+          {/* Info */}
           <motion.div
             className="order-1 lg:order-2"
             initial={{ opacity: 0, y: 40 }}
@@ -187,9 +184,7 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.7, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">
-              Get in touch
-            </h3>
+            <h3 className="text-lg sm:text-2xl font-bold text-white mb-4 sm:mb-6">Get in touch</h3>
             <div className="space-y-4 sm:space-y-6">
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-start space-x-3 sm:space-x-4">
@@ -197,26 +192,20 @@ const Contact: React.FC = () => {
                     {info.icon}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h4 className="text-base sm:text-lg font-semibold text-white mb-1">
-                      {info.title}
-                    </h4>
-                    <p className="text-green-400 font-medium mb-1 text-sm sm:text-base break-all sm:break-normal">
+                    <h4 className="text-sm sm:text-lg font-semibold text-white mb-1">{info.title}</h4>
+                    <p className="text-green-400 font-medium text-xs sm:text-base mb-1 break-all sm:break-normal">
                       {info.details}
                     </p>
-                    <p className="text-gray-400 text-xs sm:text-sm">
-                      {info.description}
-                    </p>
+                    <p className="text-gray-400 text-xs sm:text-sm">{info.description}</p>
                   </div>
                 </div>
               ))}
             </div>
-            
+
             {/* Live Chat CTA */}
             <div className="bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-500/30 rounded-lg sm:rounded-xl p-4 sm:p-6 mt-6 sm:mt-8">
-              <h4 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">
-                Need immediate help?
-              </h4>
-              <p className="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">
+              <h4 className="text-base sm:text-xl font-semibold text-white mb-3 sm:mb-4">Need immediate help?</h4>
+              <p className="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base leading-snug sm:leading-relaxed">
                 Our support team is available 24/7 to assist you with any questions or technical issues.
               </p>
               <button className="group inline-flex items-center text-green-400 hover:text-green-300 font-medium text-sm sm:text-base active:scale-95 transition-all">
@@ -227,7 +216,7 @@ const Contact: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* FAQ Section */}
+        {/* FAQ */}
         <motion.div
           className="mt-12 sm:mt-16"
           initial={{ opacity: 0, y: 40 }}
@@ -235,9 +224,7 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-8 sm:mb-12">
-            Frequently Asked Questions
-          </h3>
+          <h3 className="text-xl sm:text-3xl font-bold text-white text-center mb-8 sm:mb-12">Frequently Asked Questions</h3>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8"
             initial="hidden"
@@ -257,10 +244,10 @@ const Contact: React.FC = () => {
                 transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <h4 className="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-3 leading-tight">
+                <h4 className="text-sm sm:text-lg font-semibold text-white mb-2 sm:mb-3 leading-tight">
                   {faq.question}
                 </h4>
-                <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+                <p className="text-gray-400 text-xs sm:text-base leading-snug sm:leading-relaxed">
                   {faq.answer}
                 </p>
               </motion.div>

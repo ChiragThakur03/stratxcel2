@@ -2,6 +2,10 @@ import React from 'react';
 import { Sparkles, Twitter, Linkedin, Github, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+type FooterLink =
+  | { label: string; id: string }
+  | { label: string; href: string };
+
 const Footer: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -10,7 +14,12 @@ const Footer: React.FC = () => {
     }
   };
 
-  const footerLinks = {
+  const footerLinks: {
+    product: FooterLink[];
+    company: FooterLink[];
+    resources: FooterLink[];
+    legal: FooterLink[];
+  } = {
     product: [
       { label: 'Free AI Consultancy', id: 'free-ai' },
       { label: 'Premium Plans', id: 'premium' },
@@ -44,6 +53,30 @@ const Footer: React.FC = () => {
     { icon: <Mail className="w-4 h-4 sm:w-5 sm:h-5" />, href: '#', label: 'Email' }
   ];
 
+  const renderLinks = (links: FooterLink[]) => (
+    <ul className="space-y-2 sm:space-y-3">
+      {links.map((link, index) => (
+        <li key={index}>
+          {'id' in link ? (
+            <button
+              onClick={() => scrollToSection(link.id)}
+              className="text-gray-400 hover:text-white transition-colors duration-200 text-left text-xs sm:text-sm leading-snug sm:leading-relaxed"
+            >
+              {link.label}
+            </button>
+          ) : (
+            <a
+              href={link.href}
+              className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm leading-snug sm:leading-relaxed"
+            >
+              {link.label}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <footer className="relative z-10 bg-gray-900/50 backdrop-blur-sm border-t border-gray-700/50">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
@@ -74,7 +107,7 @@ const Footer: React.FC = () => {
               </div>
               <span className="text-lg sm:text-xl font-bold text-white">Stratxcel.AI</span>
             </div>
-            <p className="text-gray-400 mb-4 sm:mb-6 max-w-sm text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-400 mb-4 sm:mb-6 max-w-sm text-xs sm:text-base leading-snug sm:leading-relaxed">
               Transform your business with AI-powered strategy. From instant insights to expert consultation — your complete business strategy solution.
             </p>
             <div className="flex space-x-3 sm:space-x-4">
@@ -91,7 +124,7 @@ const Footer: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Product Links */}
+          {/* Columns */}
           <motion.div
             className="col-span-1"
             initial={{ opacity: 0, y: 30 }}
@@ -100,30 +133,9 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Product</h3>
-            <ul className="space-y-2 sm:space-y-3">
-              {footerLinks.product.map((link, index) => (
-                <li key={index}>
-                  {link.id ? (
-                    <button
-                      onClick={() => scrollToSection(link.id)}
-                      className="text-gray-400 hover:text-white transition-colors duration-200 text-left text-xs sm:text-sm leading-relaxed"
-                    >
-                      {link.label}
-                    </button>
-                  ) : (
-                    <a
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm leading-relaxed"
-                    >
-                      {link.label}
-                    </a>
-                  )}
-                </li>
-              ))}
-            </ul>
+            {renderLinks(footerLinks.product)}
           </motion.div>
 
-          {/* Company Links */}
           <motion.div
             className="col-span-1"
             initial={{ opacity: 0, y: 30 }}
@@ -132,30 +144,9 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Company</h3>
-            <ul className="space-y-2 sm:space-y-3">
-              {footerLinks.company.map((link, index) => (
-                <li key={index}>
-                  {link.id ? (
-                    <button
-                      onClick={() => scrollToSection(link.id)}
-                      className="text-gray-400 hover:text-white transition-colors duration-200 text-left text-xs sm:text-sm leading-relaxed"
-                    >
-                      {link.label}
-                    </button>
-                  ) : (
-                    <a
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm leading-relaxed"
-                    >
-                      {link.label}
-                    </a>
-                  )}
-                </li>
-              ))}
-            </ul>
+            {renderLinks(footerLinks.company)}
           </motion.div>
 
-          {/* Resources Links */}
           <motion.div
             className="col-span-1"
             initial={{ opacity: 0, y: 30 }}
@@ -164,21 +155,9 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Resources</h3>
-            <ul className="space-y-2 sm:space-y-3">
-              {footerLinks.resources.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm leading-relaxed"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {renderLinks(footerLinks.resources)}
           </motion.div>
 
-          {/* Legal Links */}
           <motion.div
             className="col-span-1"
             initial={{ opacity: 0, y: 30 }}
@@ -187,18 +166,7 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Legal</h3>
-            <ul className="space-y-2 sm:space-y-3">
-              {footerLinks.legal.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm leading-relaxed"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {renderLinks(footerLinks.legal)}
           </motion.div>
         </motion.div>
 
@@ -211,10 +179,10 @@ const Footer: React.FC = () => {
           viewport={{ once: true }}
         >
           <div className="mb-4 lg:mb-0">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+            <h3 className="text-lg sm:text-2xl font-bold text-white mb-2">
               Stay Updated
             </h3>
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-300 text-sm sm:text-base leading-snug sm:leading-relaxed">
               Get the latest insights on AI-powered business strategy delivered to your inbox.
             </p>
           </div>

@@ -1,85 +1,60 @@
 import React from 'react';
-import { Bot, Zap, BarChart3, Target, ArrowRight } from 'lucide-react';
-import './FreeAI.css';
+import { Bot, ArrowRight } from 'lucide-react';
 
 const FreeAI: React.FC = () => {
-  // const features = [
-  //   {
-  //     icon: <Bot className="w-8 h-8" />,
-  //     title: "AI Business Analysis",
-  //     description: "Get instant insights into your business performance with our advanced AI algorithms."
-  //   },
-  //   {
-  //     icon: <Zap className="w-8 h-8" />,
-  //     title: "Quick Recommendations",
-  //     description: "Receive actionable recommendations in minutes, not weeks."
-  //   },
-  //   {
-  //     icon: <BarChart3 className="w-8 h-8" />,
-  //     title: "Market Intelligence",
-  //     description: "Access real-time market data and competitive analysis."
-  //   },
-  //   {
-  //     icon: <Target className="w-8 h-8" />,
-  //     title: "Goal Setting",
-  //     description: "Set SMART goals with AI-powered strategic planning."
-  //   }
-  // ];
-
   return (
-    <section id="free-ai" className="relative z-10 py-20 px-6 lg:px-8">
+    <section id="free-ai" className="relative z-10 py-20 px-4 sm:px-6  lg:px-8 pt-20 sm:pt-0">
       <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-sm font-medium mb-6">
             <Bot className="w-4 h-4 mr-2" />
             100% Free Forever
           </div>
-          <h2 className="text-4xl lg:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
               Free AI Consultancy
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
             Experience the power of AI-driven business strategy without any cost. Get started with our comprehensive free tools.
           </p>
         </div>
 
-        <div className="cards">
-          <div className="first-row">
-            <div className="card card1 bg-gradient-to-r from-purple-900/60 to-blue-900/60">
-              <div className="card-content">
-              <p> <span>AI Business Analysis. </span>
-                Get instant insights into your business performance with our advanced AI algorithms.</p>
-              </div>
+        {/* Cards Grid */}
+        <div className="flex flex-col gap-10 mb-16">
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="w-full md:w-[60%] bg-gradient-to-br from-purple-900/60 to-blue-900/60 border border-[#434d72] rounded-xl p-6 text-white lg:pt-80">
+              <p className="text-base sm:text-lg">
+                <span className="font-semibold text-red-300 ">AI Business Analysis. </span> Get instant insights into your business performance with our advanced AI algorithms.
+              </p>
             </div>
-            <div className="card card2 bg-gradient-to-r from-purple-900/60 to-blue-900/60">
-              <div className="card-content">
-              <p><span> Quick Recommendations. </span>
-                Receive actionable recommendations in minutes, not weeks.</p>
-              </div>
+            <div className="w-full md:w-[40%] bg-gradient-to-br from-purple-900/60 to-blue-900/60 border border-[#434d72] rounded-xl p-6 text-white lg:pb-80">
+              <p className="text-base sm:text-lg">
+                <span className="font-semibold text-red-300">Quick Recommendations.</span> Receive actionable recommendations in minutes, not weeks.
+              </p>
             </div>
           </div>
-          <div className="second-row">
-            <div className="card card3 bg-gradient-to-r from-purple-900/60 to-blue-900/60">
-              <div className="card-content">
-              <p><span> Market Intelligence. </span> 
-                Access real-time market data and competitive analysis.</p>
-              </div>
-              </div>
-            <div className="card card4 bg-gradient-to-r from-purple-900/60 to-blue-900/60">
-            <div className="card-content">
-            <p> <span> Goal Setting. </span>
-            Set smart goals by
-            using AI-powered strategic planning to achieve faster results.</p>
-              </div>
+
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="w-full md:w-[40%] bg-gradient-to-br from-purple-900/60 to-blue-900/60 border border-[#434d72] rounded-xl p-6 text-white lg:pt-80">
+              <p className="text-base sm:text-lg">
+                <span className="font-semibold text-red-300">Market Intelligence.</span> Access real-time market data and competitive analysis.
+              </p>
+            </div>
+            <div className="w-full md:w-[60%] bg-gradient-to-br from-purple-900/60 to-blue-900/60 border border-[#434d72] rounded-xl p-6 text-white lg:pb-80">
+              <p className="text-base sm:text-lg">
+                <span className="font-semibold text-red-300">Goal Setting.</span> Set smart goals by using AI-powered strategic planning to achieve faster results.
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/30 rounded-2xl p-8 lg:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        {/* CTA Section */}
+        <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/30 rounded-2xl p-6 sm:p-10 lg:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
-              <h3 className="text-3xl font-bold text-white mb-4">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
                 Start Your Free AI Analysis
               </h3>
               <p className="text-gray-300 mb-6">

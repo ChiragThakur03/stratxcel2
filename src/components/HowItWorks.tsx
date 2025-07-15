@@ -34,12 +34,12 @@ const HowItWorks = () => {
   ];
 
   return (
-    <div ref={containerRef} className="relative bg-black min-h-screen">
+    <div ref={containerRef} className="relative bg-black min-h-screen ">
       {/* Header Section */}
       <div className="sticky top-0 h-screen flex items-center justify-center bg-black">
         <div className="text-center z-10">
           <motion.h2 
-            className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8"
+            className="text-[clamp(32px,10vw,96px)] font-bold mb-8"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -49,7 +49,7 @@ const HowItWorks = () => {
             </span>
           </motion.h2>
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-4"
+            className="text-[clamp(16px,4vw,24px)] text-gray-300 max-w-4xl mx-auto leading-relaxed px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -86,25 +86,25 @@ const HowItWorks = () => {
         const scale = useTransform(scrollYProgress, range, [1, targetScale]);
 
         return (
-          <div key={index} className="sticky top-0 h-screen flex items-center justify-center">
+          <div key={index} className="sticky top-0 h-screen flex items-center justify-center px-4">
             <motion.div
               style={{
                 background: `linear-gradient(135deg, #ec4899, #8b5cf6, #3b82f6)`,
                 scale,
                 top: `calc(-5vh + ${index * 25}px)`
               }}
-              className="relative w-[90vw] max-w-[1000px] h-[500px] rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-8 shadow-2xl border border-white/10 backdrop-blur-sm"
+              className="relative w-full max-w-[760px] md:max-w-[1000px] h-[370px] md:h-[500px] rounded-3xl p-6 md:p-12 flex flex-col md:flex-row gap-8 shadow-2xl border border-white/10 backdrop-blur-sm overflow-hidden"
             >
               {/* Content Section */}
               <div className="flex-1 flex flex-col justify-center text-white">
                 <div className="mb-8">
-                  <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/30">
-                    <Icon className="w-10 h-10 text-white" />
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/30 relative overflow-hidden">
+                    <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                  <h3 className="text-[clamp(20px,5vw,32px)] font-bold mb-4">
                     {feature.title}
                   </h3>
-                  <p className="text-lg md:text-xl leading-relaxed opacity-90 mb-6">
+                  <p className="text-[clamp(14px,4vw,20px)] leading-relaxed opacity-90 mb-6">
                     {feature.description}
                   </p>
                   <div className="flex items-center gap-2 text-sm font-medium">
@@ -117,7 +117,7 @@ const HowItWorks = () => {
               </div>
 
               {/* Visual Section */}
-              <div className="flex-1 relative">
+              <div className="flex-1 relative hidden sm:block">
                 <div className="absolute inset-0 bg-black/20 rounded-2xl backdrop-blur-sm overflow-hidden border border-white/20">
                   {/* Animated Tech Pattern */}
                   <div className="absolute inset-0 opacity-30">
@@ -157,10 +157,10 @@ const HowItWorks = () => {
                           }}
                         />
                       ))}
-                      
+
                       {/* Central Icon */}
                       <motion.div 
-                        className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30"
+                        className="w-20 h-20 sm:w-24 sm:h-24 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30"
                         animate={{
                           rotate: [0, 360],
                           scale: [1, 1.1, 1]
@@ -170,7 +170,7 @@ const HowItWorks = () => {
                           scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                         }}
                       >
-                        <Icon className="w-12 h-12 text-white" />
+                        <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
                       </motion.div>
                     </div>
                   </div>
@@ -191,10 +191,10 @@ const HowItWorks = () => {
               </div>
 
               {/* Decorative Elements */}
-              <div className="absolute top-4 right-4 text-white/20 text-6xl font-bold">
+              <div className="absolute top-4 right-4 text-white/20 text-5xl sm:text-6xl font-bold">
                 {String(index + 1).padStart(2, '0')}
               </div>
-              
+
               {/* Glow Effect */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/5 via-transparent to-black/30 pointer-events-none" />
             </motion.div>

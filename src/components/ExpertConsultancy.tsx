@@ -72,12 +72,12 @@ const ExpertConsultancy: React.FC = () => {
             <Users className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
             Human Expertise
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
             <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
               Expert Consultancy
             </span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-lg md:text-xl text-gray-300 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto leading-snug sm:leading-relaxed">
             Combine the power of AI with human expertise. Our certified consultants bring decades of experience to help you navigate complex business challenges.
           </p>
         </motion.div>
@@ -90,7 +90,7 @@ const ExpertConsultancy: React.FC = () => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-8 sm:mb-12">
+          <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-8 sm:mb-12">
             Meet Our Expert Team
           </h3>
           <motion.div
@@ -112,14 +112,14 @@ const ExpertConsultancy: React.FC = () => {
                 transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{expert.avatar}</div>
-                <h4 className="text-lg sm:text-xl font-semibold text-white mb-2">
+                <div className="text-2xl sm:text-4xl mb-3 sm:mb-4">{expert.avatar}</div>
+                <h4 className="text-base sm:text-xl font-semibold text-white mb-2">
                   {expert.name}
                 </h4>
                 <p className="text-orange-400 font-medium mb-2 text-sm sm:text-base">
                   {expert.role}
                 </p>
-                <p className="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-3 leading-relaxed">
+                <p className="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-3 leading-snug sm:leading-relaxed">
                   {expert.expertise}
                 </p>
                 <div className="text-xs text-gray-500">
@@ -138,7 +138,7 @@ const ExpertConsultancy: React.FC = () => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-8 sm:mb-12">
+          <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-8 sm:mb-12">
             Our Expert Services
           </h3>
           <motion.div
@@ -163,10 +163,10 @@ const ExpertConsultancy: React.FC = () => {
                 <div className="text-red-400 mb-3 sm:mb-4 flex justify-center">
                   {service.icon}
                 </div>
-                <h4 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">
+                <h4 className="text-base sm:text-xl font-semibold text-white mb-2 sm:mb-3">
                   {service.title}
                 </h4>
-                <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+                <p className="text-gray-400 text-sm sm:text-base leading-snug sm:leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
@@ -174,7 +174,7 @@ const ExpertConsultancy: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* CTA Section */}
+        {/* CTA */}
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center"
           initial={{ opacity: 0, y: 40 }}
@@ -183,26 +183,26 @@ const ExpertConsultancy: React.FC = () => {
           viewport={{ once: true }}
         >
           <div className="order-2 lg:order-1">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
+            <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
               Ready to Work with Our Experts?
             </h3>
-            <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-snug sm:leading-relaxed">
               Schedule a consultation with our expert team. We'll analyze your business needs and create a customized strategy to drive your growth.
             </p>
-            <ul className="space-y-2 sm:space-y-3 text-gray-300">
-              <li className="flex items-center text-sm sm:text-base">
+            <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base">
+              <li className="flex items-center">
                 <div className="w-2 h-2 bg-orange-400 rounded-full mr-3 flex-shrink-0"></div>
                 Personalized consultation sessions
               </li>
-              <li className="flex items-center text-sm sm:text-base">
+              <li className="flex items-center">
                 <div className="w-2 h-2 bg-orange-400 rounded-full mr-3 flex-shrink-0"></div>
                 Custom strategy development
               </li>
-              <li className="flex items-center text-sm sm:text-base">
+              <li className="flex items-center">
                 <div className="w-2 h-2 bg-orange-400 rounded-full mr-3 flex-shrink-0"></div>
                 Ongoing support and guidance
               </li>
-              <li className="flex items-center text-sm sm:text-base">
+              <li className="flex items-center">
                 <div className="w-2 h-2 bg-orange-400 rounded-full mr-3 flex-shrink-0"></div>
                 Implementation assistance
               </li>
