@@ -21,6 +21,8 @@ import ServicesMobile from './components/ServicesMobile';
 import ServicesPage from './pages/Services';
 import Services2 from './components/Services2';
 import { useLandingScrollRestore } from './hooks/useLandingScrollRestore';
+import Productivity from './components/Productivity';
+
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -58,7 +60,8 @@ function App() {
                 <>
                   <Hero />
                   <HowItWorks />
-                  <FreeAI />
+                  {/* <FreeAI /> */}
+                  <Productivity/>
                   {isMobileView ? <Services2 /> : <Services />}
                   <About />
                   <PremiumPlans />
