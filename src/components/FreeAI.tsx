@@ -3,7 +3,7 @@ import { Bot, ArrowRight } from 'lucide-react';
 
 const FreeAI: React.FC = () => {
   return (
-    <section id="free-ai" className="relative z-10 py-20 px-4 sm:px-6  lg:px-8 pt-20 sm:pt-0">
+    <section id="free-ai" className="relative z-10 py-20 px-4 sm:px-6  lg:px-8 pt-20 sm:pt-0 animate-fade-in-up">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">

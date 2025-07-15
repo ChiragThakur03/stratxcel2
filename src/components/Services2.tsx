@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Services2.css'
 
 const SERVICES = [
   'AI-Powered Business Automation',
@@ -36,7 +37,7 @@ const Services2: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative z-10 py-12 px-4 sm:px-6 lg:px-8 bg-transparent">
+    <section id='services2' className="relative z-10 py-12 px-4 sm:px-6 lg:px-8 bg-transparent">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">

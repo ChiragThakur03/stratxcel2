@@ -1,0 +1,10 @@
+#services2{
+    display: none;
+}
+
+@media (width < 1000px) {
+   
+    #services2 {
+      display: block;
+    }
+  }

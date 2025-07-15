@@ -136,10 +136,10 @@ const SERVICES = [
 
 const Services: React.FC = () => {
   return (
-    <section className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-950">
+    <section className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-950 animate-fade-in-up">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">Sub Services</h2>
+          <h2 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">Services</h2>
           <p className="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto">Explore our detailed sub-services for each business solution.</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

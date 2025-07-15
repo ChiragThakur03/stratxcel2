@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
@@ -20,7 +20,7 @@ import PremiumPlansPage from './components/PremiumPlans';
 import ServicesMobile from './components/ServicesMobile';
 import ServicesPage from './pages/Services';
 import Services2 from './components/Services2';
-
+import { useLandingScrollRestore } from './hooks/useLandingScrollRestore';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -31,11 +31,25 @@ function ScrollToTop() {
 }
 
 function App() {
+  useLandingScrollRestore();
+
+  // 👇 Move responsive logic here
+  const [isMobileView, setIsMobileView] = useState<boolean>(window.innerWidth < 1000);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth < 1000);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <div className="min-h-screen bg-black text-white">
-        <ParticleBackground/>
+        <ParticleBackground />
         <div className="flex">
           <Navbar />
           <div className="flex-1 w-full md:pl-56">
@@ -44,15 +58,13 @@ function App() {
                 <>
                   <Hero />
                   <HowItWorks />
-                  <FreeAI/>
-                  <Services2/>
-                  {/* <Services/> */}
-                  {/* <ServicesMobile/> */}
-                  <About/>
-                  <PremiumPlans/>
-                  <ExpertConsultancy/>
-                  <Contact/>
-                  <Footer/>
+                  <FreeAI />
+                  {isMobileView ? <Services2 /> : <Services />}
+                  <About />
+                  <PremiumPlans />
+                  <ExpertConsultancy />
+                  <Contact />
+                  <Footer />
                 </>
               } />
               <Route path="/contact" element={<ContactPage />} />
@@ -61,12 +73,11 @@ function App() {
               <Route path="/free-ai-consultancy" element={<FreeAIPage />} />
               <Route path="/premium-plans" element={<PremiumPlansPage />} />
               <Route path="/services" element={<ServicesPage />} />
-             
             </Routes>
           </div>
         </div>
       </div>
-    </BrowserRouter>
+    </>
   );
 }
 

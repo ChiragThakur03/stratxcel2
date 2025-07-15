@@ -1,51 +1,116 @@
 import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Globe, ChevronLeft, ChevronRight } from "lucide-react";
+import {Bot, Star, TrendingUp, Globe, Rocket, Users, Briefcase, FileText, ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
+import './Services.css'
 
 gsap.registerPlugin(ScrollTrigger);
 
 const CARDS = [
   {
-    title: "Market Analysis",
-    description: "In-depth research to identify opportunities and threats in your industry, helping you make data-driven decisions.",
-    buttonText: "View Analysis"
+    icon: <Bot className="w-8 h-8 text-purple-400" />,
+    title: 'AI-Powered Business Automation',
+    sub: [
+      'Workflow Automation with AI',
+      'Chatbot Development (Customer Support Bots)',
+      'AI-Based Inventory Management',
+      'Predictive Analytics for Sales',
+      'CRM & Email Automation Integration',
+      'AI-Powered Report Generation',
+      'Intelligent Lead Scoring System',
+    ],
   },
   {
-    title: "Digital Transformation",
-    description: "Modernize your business processes and technology stack for greater efficiency and agility.",
-    buttonText: "Start Transformation"
+    icon: <Star className="w-8 h-8 text-pink-400" />,
+    title: 'Branding & Positioning',
+    sub: [
+      'Brand Identity Design (Logo, Colors, Typography)',
+      'Brand Messaging & Voice Strategy',
+      'Competitor Brand Analysis',
+      'Tagline & Slogan Creation',
+      'Rebranding Services',
+      'Brand Guidelines Documentation',
+      'Positioning Map & Strategy',
+    ],
   },
   {
-    title: "AI-Powered Insights",
-    description: "Leverage artificial intelligence to uncover actionable insights and drive smarter strategies.",
-    buttonText: "Get Insights"
+    icon: <TrendingUp className="w-8 h-8 text-blue-400" />,
+    title: 'Business Development Strategy',
+    sub: [
+      'Market Entry Strategy',
+      'Strategic Partnerships & Alliances',
+      'Sales Strategy & Roadmap',
+      'Competitive Landscape Mapping',
+      'Product-Market Fit Analysis',
+      'Go-To-Market (GTM) Planning',
+      'Revenue Forecasting & Modeling',
+    ],
   },
   {
-    title: "Growth Strategy",
-    description: "Tailored plans to accelerate your business growth and expand your market reach.",
-    buttonText: "See Strategy"
+    icon: <Globe className="w-8 h-8 text-green-400" />,
+    title: 'Digital Marketing',
+    sub: [
+      'SEO (Search Engine Optimization)',
+      'Social Media Marketing (SMM)',
+      'Google Ads & PPC Management',
+      'Content Marketing Strategy',
+      'Email Marketing Campaigns',
+      'Influencer Marketing Setup',
+      'Marketing Analytics & Reporting',
+    ],
   },
   {
-    title: "Brand Positioning",
-    description: "Define and communicate your unique value to stand out in a crowded marketplace.",
-    buttonText: "Explore Branding"
+    icon: <Users className="w-8 h-8 text-yellow-400" />,
+    title: 'Lead Generation & CRM Setup',
+    sub: [
+      'B2B/B2C Lead Generation Strategy',
+      'Landing Page & Funnel Creation',
+      'CRM Integration (HubSpot, Zoho, Salesforce)',
+      'Lead Nurturing Automation',
+      'LinkedIn Lead Outreach',
+      'Lead Qualification Framework',
+      'Email Capture & Retargeting Setup',
+    ],
   },
   {
-    title: "Customer Experience Design",
-    description: "Enhance every touchpoint to deliver exceptional experiences and build lasting loyalty.",
-    buttonText: "Improve Experience"
+    icon: <Briefcase className="w-8 h-8 text-orange-400" />,
+    title: 'Market Research & Analysis',
+    sub: [
+      'Target Audience Profiling',
+      'Industry Trends & Reports',
+      'SWOT & PESTLE Analysis',
+      'Customer Surveys & Interviews',
+      'Competitor Benchmarking',
+      'Product Demand Validation',
+      'Market Size Estimation',
+    ],
   },
   {
-    title: "Operational Excellence",
-    description: "Streamline operations to boost productivity, reduce costs, and maximize value.",
-    buttonText: "Optimize Now"
+    icon: <FileText className="w-8 h-8 text-cyan-400" />,
+    title: 'Pitch Deck & Funding Support',
+    sub: [
+      'Investor-Ready Pitch Deck Design',
+      'Business Plan Writing',
+      'Financial Projection Modeling',
+      'Startup Valuation Consulting',
+      'Fundraising Strategy',
+      'Angel/VC Matching',
+      'Pitch Rehearsal & Feedback Sessions',
+    ],
   },
   {
-    title: "Innovation Workshops",
-    description: "Empower your team with creative tools and frameworks to drive innovation and solve complex challenges.",
-    buttonText: "Join Workshop"
+    icon: <Rocket className="w-8 h-8 text-fuchsia-400" />,
+    title: 'Sales Funnel Building',
+    sub: [
+      'Funnel Strategy Blueprint',
+      'Landing Page & Email Funnel Setup',
+      'Lead Magnet Creation',
+      'Conversion Rate Optimization (CRO)',
+      'Sales Copywriting',
+      'Funnel Analytics & A/B Testing',
+      'Retargeting & Upsell Funnels',
+    ],
   }
 ];
 
@@ -174,35 +239,20 @@ const Services: React.FC = () => {
                 overflow: "hidden",
             }}
         >
-            {/* <div
-                style={{
-                    position: "absolute",
-                    top: "-0.75rem",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    zIndex: 2,
-                    background: "rgba(59,130,246,0.2)",
-                    border: "1px solid rgba(59,130,246,0.3)",
-                    borderRadius: "9999px",
-                    padding: "0.25rem 0.75rem",
-                    color: "#60a5fa",
-                    fontWeight: 500,
-                    fontSize: "0.75rem",
-                }}
-            >
-                Service
-            </div> */}
             <h3 className={`font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent ${isMobile ? 'text-xl' : 'text-lg'} mt-4`}>
                 {card.title}
             </h3>
-            <p className={`text-gray-200 ${isMobile ? 'text-sm' : 'text-xs'} leading-relaxed text-center`} style={{ margin: 0, padding: 0 }}>
-                {card.description}
-            </p>
+            <ul className="text-gray-200 text-xs md:text-sm leading-relaxed text-left my-2 list-disc list-inside">
+                {card.sub.slice(0, 3).map((item, i) => (
+                    <li key={i}>{item}</li>
+                ))}
+                {card.sub.length > 3 && <li className="text-gray-400">...and more</li>}
+            </ul>
             <button
                 onClick={() => setSelectedCard(card)}
                 className={`${isMobile ? 'px-5 py-2.5 text-sm' : 'px-4 py-1.5 text-xs'} font-semibold bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-lg hover:from-purple-600 hover:to-pink-600 hover:scale-105 transition-all duration-200 mt-auto`}
             >
-                {card.buttonText}
+                See All
             </button>
         </div>
     );
@@ -315,9 +365,11 @@ const Services: React.FC = () => {
                             <h2 className="text-xl md:text-2xl font-bold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent pr-8">
                                 {selectedCard.title}
                             </h2>
-                            <p className="text-gray-200 mb-6 text-base md:text-lg">
-                                {selectedCard.description}
-                            </p>
+                            <ul className="text-gray-200 mb-6 text-base md:text-lg text-left list-disc list-inside">
+                                {selectedCard.sub.map((item, i) => (
+                                    <li key={i}>{item}</li>
+                                ))}
+                            </ul>
                             <button
                                 className="px-4 py-2 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-lg hover:shadow-purple-500/25 hover:scale-105"
                                 onClick={() => setSelectedCard(null)}
