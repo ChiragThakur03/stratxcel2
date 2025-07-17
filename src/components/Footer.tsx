@@ -207,7 +207,7 @@ const Footer: React.FC = () => {
           viewport={{ once: true }}
         >
           <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-left">
-            © 2024 Stratxcel.AI. All rights reserved.
+            © 2025 Stratxcel. All rights reserved.
           </p>
           <div className="flex items-center space-x-3 sm:space-x-6 text-xs sm:text-sm text-gray-400">
             <span className="text-center">Made with ❤️ by TRUSTING BRAINS</span>

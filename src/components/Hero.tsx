@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
                 <button 
-                  onClick={() => scrollToSection('contact')}
+                  onClick={() => window.open('https://stratxcel.ai', '_blank')}
                   className="group w-full sm:w-auto bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-[clamp(14px,3.5vw,18px)] font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 flex items-center justify-center active:scale-95"
                 >
                   Start Free Consultation

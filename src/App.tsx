@@ -15,7 +15,7 @@ import Services from './components/Services';
 import AboutPage from './components/About';
 import ContactPage from './pages/Contact';
 import ExpertConsultancyPage from './components/ExpertConsultancy';
-import FreeAIPage from './components/FreeAI';
+import FreeAIPage from './components/Productivity';
 import PremiumPlansPage from './components/PremiumPlans';
 import ServicesMobile from './components/ServicesMobile';
 import ServicesPage from './pages/Services';

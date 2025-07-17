@@ -16,7 +16,7 @@ function FreeAIConsult() {
                 </h2>
                 <p className="text-sm sm:text-lg md:text-xl text-gray-300 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto leading-snug sm:leading-relaxed">
                     We're on a mission to democratize strategic business intelligence, making world-class consulting accessible to every business through the power of AI.
-                </p>
+                </p> 
             </div>
             <div className="first-row">
                 {/* Keyboard Shortcuts Card */}

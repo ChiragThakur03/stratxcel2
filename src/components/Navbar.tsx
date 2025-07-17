@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Home', href: '/', isHome: true },
-    { name: 'Free AI Consultancy', href: '/free-ai-consultancy', isFreeAI: true },
+    { name: 'Accelerate', href: '/free-ai-consultancy', isFreeAI: true },
     { name: 'Services', href: '/services', isServices: true },
     { name: 'Premium Plans', href: '/premium-plans', isPremium: true },
     { name: 'Expert Consultancy', href: '/expert-consultancy', isExpert: true },

@@ -136,26 +136,72 @@ const SERVICES = [
 
 const Services: React.FC = () => {
   return (
-    <section className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-950 animate-fade-in-up">
+    <section className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-950">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">Services</h2>
-          <p className="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto">Explore our detailed sub-services for each business solution.</p>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent mb-6">
+            Our Services
+          </h2>
+          <p className="text-gray-300 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
+            Comprehensive business solutions tailored to accelerate your growth and success
+          </p>
         </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {SERVICES.map((service, idx) => (
-            <div key={idx} className="bg-gray-800/60 border border-purple-500/20 rounded-2xl p-8 flex flex-col shadow-lg hover:shadow-purple-500/20 transition-shadow duration-300 group hover:scale-105">
-              <div className="flex items-center gap-4 mb-4">
-                {service.icon}
-                <h3 className="text-xl font-semibold text-white group-hover:text-purple-300 transition-colors duration-200">{service.title}</h3>
+            <div
+              key={idx}
+              className="group relative bg-gradient-to-br from-gray-800/80 via-gray-900/60 to-black/40 backdrop-blur-sm border border-purple-500/20 rounded-3xl p-8 shadow-xl hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+            >
+              {/* Animated background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 via-pink-600/5 to-cyan-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Glowing border effect */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+              
+              {/* Content */}
+              <div className="relative z-10">
+                {/* Icon and title header */}
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="flex-shrink-0 p-3 bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-2xl border border-gray-600/30 group-hover:border-purple-400/50 transition-all duration-300 group-hover:scale-110">
+                    {service.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text transition-all duration-300 leading-tight">
+                      {service.title}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Services list */}
+                <div className="space-y-3">
+                  {service.sub.map((sub, i) => (
+                    <div
+                      key={i}
+                      className="flex items-start gap-3 group/item opacity-80 group-hover:opacity-100 transition-all duration-300"
+                      style={{ animationDelay: `${i * 50}ms` }}
+                    >
+                      <div className="flex-shrink-0 w-1.5 h-1.5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mt-2 group-hover/item:scale-150 transition-transform duration-200"></div>
+                      <span className="text-gray-300 text-sm leading-relaxed group-hover/item:text-white transition-colors duration-200">
+                        {sub}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Hover overlay with subtle pattern */}
+                <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-purple-500/10 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
-              <ul className="list-disc list-inside text-gray-300 text-sm space-y-2 pl-2">
-                {service.sub.map((sub, i) => (
-                  <li key={i}>{sub}</li>
-                ))}
-              </ul>
+
+              {/* Animated corner accent */}
+              <div className="absolute top-4 right-4 w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-50 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300"></div>
             </div>
           ))}
+        </div>
+
+        {/* Bottom decorative element */}
+        <div className="flex justify-center mt-16">
+          <div className="w-32 h-1 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 rounded-full"></div>
         </div>
       </div>
     </section>
