@@ -1,247 +1,177 @@
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import { Brain, Zap, Target, Users, ArrowRight, Sparkles, TrendingUp, Shield } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Brain, Zap, Target, Users, ArrowRight, Sparkles, Shield, Check } from 'lucide-react';
 
-const HowItWorks = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end']
-  });
+const HowItWorks: React.FC = () => {
+  const [activeStep, setActiveStep] = useState(0);
 
-  const features = [
+  const steps = [
     {
-      icon: Brain,
-      title: "AI-Powered Insights",
-      description: "Get instant business insights powered by advanced AI algorithms that analyze market trends, competitor data, and consumer behavior patterns to deliver actionable recommendations for your business growth.",
-      image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800",
-      gradient: "from-purple-500 via-pink-500 to-red-500",
-      stats: "99.7% Accuracy",
-      badge: "AI Powered"
+      icon: <Brain className="w-5 h-5 text-purple-400" />,
+      badge: "Step 01",
+      title: "Model Processing",
+      shortDesc: "Train custom strategy models on proprietary corporate telemetry.",
+      longDesc: "Our neural engines parse your organization's metric histories to build dedicated local models. By matching data against 100+ industry verticals, we find key execution anomalies and hidden marketing vectors.",
+      deliverable: "Custom Model Architecture",
+      timeframe: "Instant",
+      color: "border-purple-500/20 text-purple-400 bg-purple-500/5",
+      glow: "rgba(168, 85, 247, 0.15)"
     },
     {
-      icon: Zap,
-      title: "Lightning Fast",
-      description: "Receive comprehensive strategy reports in minutes, not days. Our optimized AI processing pipeline ensures rapid analysis while maintaining the highest quality of insights and recommendations.",
-      //  image: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpg?auto=compress&cs=tinysrgb&w=800",
-      image: "https://images.pexels.com/photos/355948/pexels-photo-355948.jpeg?auto=compress&cs=tinysrgb&w=800",
-       gradient: "from-blue-500 via-cyan-500 to-teal-500",
-       stats: "< 5 Minutes",
-       badge: "Ultra Fast"
+      icon: <Zap className="w-5 h-5 text-cyan-400" />,
+      badge: "Step 02",
+      title: "Simulation Triggers",
+      shortDesc: "Run automated velocity audits to test scaling boundaries.",
+      longDesc: "Test workflow configurations, lead score metrics, and SEO automation triggers against actual client traffic constraints. Optimize resource allocation before launching live.",
+      deliverable: "Interactive Velocity Report",
+      timeframe: "3-5 mins",
+      color: "border-cyan-500/20 text-cyan-400 bg-cyan-500/5",
+      glow: "rgba(6, 182, 212, 0.15)"
     },
     {
-      icon: Target,
-      title: "Precision Targeting",
-      description: "Industry-specific solutions tailored to your business needs. Our AI understands the nuances of different sectors and provides customized strategies that align with your market dynamics.",
-      image: "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800",
-      gradient: "from-pink-500 via-purple-500 to-indigo-500",
-      stats: "100+ Industries",
-      badge: "Precision"
+      icon: <Target className="w-5 h-5 text-emerald-400" />,
+      badge: "Step 03",
+      title: "Targeting Matrix",
+      shortDesc: "Align regional campaign budgets with precision ROI goals.",
+      longDesc: "Define localized marketing targets and automate ad funnel bids. Our systems dynamically re-allocate investments to preserve a high customer lifetime-value to acquisition ratio.",
+      deliverable: "Localized Campaign Maps",
+      timeframe: "Daily updates",
+      color: "border-emerald-500/20 text-emerald-400 bg-emerald-500/5",
+      glow: "rgba(16, 185, 129, 0.15)"
     },
     {
-      icon: Users,
-      title: "Expert Network",
-      description: "Access to verified industry experts for specialized consultation. Connect with seasoned professionals who can provide human insight to complement our AI-powered recommendations.",
-      image: "https://images.pexels.com/photos/7156099/pexels-photo-7156099.jpeg?_gl=1*5ijy7g*_ga*MTA5NDczMjM5NS4xNzUyNjQ2MDU1*_ga_8JE65Q40S6*czE3NTI2NDYwNTQkbzEkZzEkdDE3NTI2NDYxMjQkajUwJGwwJGgw",
-      gradient: "from-cyan-500 via-blue-500 to-purple-500",
-      stats: "500+ Experts",
-      badge: "Expert Network"
+      icon: <Users className="w-5 h-5 text-amber-400" />,
+      badge: "Step 04",
+      title: "Analyst Validation",
+      shortDesc: "Deploy verified senior strategy directors for compliance review.",
+      longDesc: "Every automated output is reviewed and validated by our verified network of senior corporate consultants. Get human insights to justify decisions to stakeholders.",
+      deliverable: "Board-Ready Signed Playbook",
+      timeframe: "2 hour SLA",
+      color: "border-amber-500/20 text-amber-400 bg-amber-500/5",
+      glow: "rgba(245, 158, 11, 0.15)"
     }
   ];
 
   return (
-    <div ref={containerRef} className="relative bg-black min-h-screen">
-      {/* Header Section */}
-      <div className="sticky top-0 h-screen flex items-center justify-center bg-black">
-        <div className="text-center z-10">
-          <motion.div
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-purple-300 text-sm font-medium mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <Sparkles className="w-4 h-4 mr-2" />
-            How It Works
-          </motion.div>
-          
-          <motion.h2 
-            className="text-[clamp(32px,10vw,96px)] font-bold mb-8"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Transform Your Business
-            </span>
-          </motion.h2>
-          
-          <motion.p 
-            className="text-[clamp(16px,4vw,24px)] text-gray-300 max-w-4xl mx-auto leading-relaxed px-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          >
-            Experience the future of business consulting with our comprehensive AI-powered platform
-          </motion.p>
-        </div>
-
-        {/* Enhanced Animated Background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(147,51,234,0.15),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(236,72,153,0.1),transparent_50%)]" />
-          <div className="absolute inset-0 opacity-30">
-            {[...Array(50)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-1 h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 3}s`
-                }}
-              />
-            ))}
-          </div>
-        </div>
+    <section id="how-it-works" className="relative z-10 py-24 px-6 sm:px-8 lg:px-12 bg-[#06080F]">
+      {/* Background radial overlays */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-purple-950/5 rounded-full blur-[130px]" />
       </div>
 
-      {/* Enhanced Sticky Cards Section */}
-      {features.map((feature, index) => {
-        const Icon = feature.icon;
-        const targetScale = 1 - ((features.length - index) * 0.05);
-        const range = [index * 0.25, 1];
-        const scale = useTransform(scrollYProgress, range, [1, targetScale]);
-
-        return (
-          <div key={index} className="sticky top-0 h-screen flex items-center justify-center px-4">
-            <motion.div
-              style={{
-                scale,
-                top: `calc(-5vh + ${index * 25}px)`
-              }}
-              className={`relative w-full max-w-[900px] md:max-w-[1200px] h-[400px] md:h-[550px] rounded-3xl overflow-hidden shadow-2xl group`}
-            >
-              {/* Enhanced Gradient Background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-90`} />
-              
-              {/* Glassmorphism Overlay */}
-              <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
-              
-              {/* Animated Border */}
-              <div className="absolute inset-0 rounded-3xl border border-white/20 group-hover:border-white/40 transition-all duration-500" />
-              
-              {/* Content Container */}
-              <div className="relative h-full p-6 md:p-12 flex flex-col md:flex-row gap-8">
-                
-                {/* Content Section */}
-                <div className="flex-1 flex flex-col justify-center text-white z-10">
-                  
-                  {/* Badge */}
-                  <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-white text-sm font-medium mb-6 w-fit">
-                    <Shield className="w-4 h-4 mr-2" />
-                    {feature.badge}
-                  </div>
-                  
-                  {/* Icon Container */}
-                  {/* <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white/20 rounded-3xl flex items-center justify-center mb-6 backdrop-blur-sm border border-white/30 relative overflow-hidden group-hover:scale-110 transition-transform duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-                    <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-white relative z-10" />
-                  </div> */}
-                  
-                  {/* Title */}
-                  <h3 className="text-[clamp(24px,5vw,40px)] font-bold mb-4 leading-tight">
-                    {feature.title}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="text-[clamp(16px,4vw,20px)] leading-relaxed opacity-90 mb-6 max-w-lg">
-                    {feature.description}
-                  </p>
-                  
-                  {/* Stats */}
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm border border-white/20">
-                      <TrendingUp className="w-4 h-4" />
-                      <span className="text-sm font-semibold">{feature.stats}</span>
-                    </div>
-                  </div>
-                  
-                  {/* CTA Button */}
-                  <button className="inline-flex items-center gap-3 px-6 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-full text-white font-medium transition-all duration-300 hover:scale-105 w-fit group/btn">
-                    <span>Learn More</span>
-                    <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </button>
-                </div>
-
-                {/* Enhanced Visual Section */}
-                <div className="flex-1 relative">
-                  <div className="absolute inset-0 bg-black/30 rounded-2xl overflow-hidden border border-white/20 backdrop-blur-sm group-hover:scale-105 transition-transform duration-500">
-                    
-                    {/* Main Image */}
-                    <img
-                      src={feature.image}
-                      alt={`${feature.title} visualization`}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    
-                    {/* Image Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-                    
-                    {/* Floating Elements */}
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium border border-white/30">
-                      Step {index + 1}
-                    </div>
-                    
-                    {/* Progress Dots */}
-                    <div className="absolute bottom-4 left-4 flex gap-2">
-                      {features.map((_, i) => (
-                        <div
-                          key={i}
-                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            i === index ? 'bg-white' : 'bg-white/40'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                    
-                    {/* Animated Particles */}
-                    <div className="absolute inset-0 opacity-40">
-                      {[...Array(8)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
-                          style={{
-                            left: `${20 + Math.random() * 60}%`,
-                            top: `${20 + Math.random() * 60}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${1 + Math.random() * 2}s`
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Enhanced Decorative Elements */}
-              <div className="absolute top-6 right-6 text-white/10 text-6xl sm:text-8xl font-bold leading-none">
-                {String(index + 1).padStart(2, '0')}
-              </div>
-
-              {/* Enhanced Glow Effects */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/5 via-transparent to-black/20 pointer-events-none" />
-              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
-              
-              {/* Corner Accents */}
-              <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-white/20 to-transparent rounded-br-3xl" />
-              <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-white/20 to-transparent rounded-tl-3xl" />
-            </motion.div>
+      <div className="max-w-7xl mx-auto relative">
+        
+        {/* Header */}
+        <div className="text-center mb-16 flex flex-col items-center">
+          <div className="inline-flex items-center px-4 py-2 bg-white/[0.03] backdrop-blur-md border border-white/[0.08] rounded-full text-purple-300 text-xs font-semibold uppercase tracking-wider mb-6">
+            <Shield className="w-4 h-4 mr-2 text-purple-400" />
+            Execution Roadmap
           </div>
-        );
-      })}
-    </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-white">
+            Operational Blueprint
+          </h2>
+          <p className="text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+            Four sequential phases engineered to accelerate strategic decision-making with high-fidelity accuracy.
+          </p>
+        </div>
+
+        {/* Stepper Grid Container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {steps.map((step, idx) => {
+            const isActive = activeStep === idx;
+            return (
+              <div
+                key={idx}
+                onClick={() => setActiveStep(idx)}
+                className={`relative p-6 rounded-2xl border cursor-pointer transition-all duration-300 flex flex-col justify-between h-52 group ${
+                  isActive 
+                    ? 'bg-[#0E1324]/80 border-purple-500/40 shadow-lg shadow-purple-500/5' 
+                    : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04] hover:border-white/10'
+                }`}
+              >
+                {/* Accent glow corner */}
+                <div 
+                  className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-20 group-hover:opacity-45"
+                  style={{
+                    background: `radial-gradient(circle at 90% 10%, ${step.glow}, transparent 35%)`
+                  }}
+                />
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-9 h-9 bg-white/[0.03] border border-white/[0.08] rounded-xl flex items-center justify-center">
+                      {step.icon}
+                    </div>
+                    <span className="text-[10px] uppercase font-bold text-gray-500 tracking-wider">
+                      {step.badge}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2 tracking-tight">{step.title}</h3>
+                  <p className="text-gray-400 text-xs leading-relaxed">{step.shortDesc}</p>
+                </div>
+
+                <div className="relative z-10 flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-purple-400 group-hover:text-purple-300 transition-colors">
+                  <span>View Phase</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Dynamic Detail Viewer Panel */}
+        <div className="glass-card rounded-3xl p-6 sm:p-10 relative overflow-hidden border-purple-500/10 min-h-[250px] flex flex-col lg:flex-row justify-between gap-10">
+          <div 
+            className="absolute inset-0 pointer-events-none opacity-40"
+            style={{
+              background: `radial-gradient(circle at 10% 10%, ${steps[activeStep].glow}, transparent 40%)`
+            }}
+          />
+
+          {/* Left Details */}
+          <div className="flex-1 relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.03] border border-white/[0.06] rounded-full text-xs font-bold uppercase tracking-wider text-purple-300 mb-4">
+              <span>{steps[activeStep].badge}</span>
+              <span>•</span>
+              <span>Active Stage</span>
+            </div>
+            <h4 className="text-2xl sm:text-3xl font-extrabold text-white mb-4 tracking-tight">
+              {steps[activeStep].title} Process
+            </h4>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
+              {steps[activeStep].longDesc}
+            </p>
+          </div>
+
+          {/* Right Metrics / Hand-offs */}
+          <div className="w-full lg:w-96 bg-white/[0.01] border border-white/[0.06] rounded-2xl p-6 backdrop-blur-sm z-10 flex flex-col justify-between gap-6">
+            <div>
+              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-3">Deliverable Output</p>
+              <div className="flex items-center gap-2.5 bg-white/[0.02] border border-white/5 p-3 rounded-xl mb-4">
+                <div className="w-5 h-5 rounded-md bg-purple-500/10 border border-purple-500/30 flex items-center justify-center">
+                  <Check className="w-3 h-3 text-purple-400" />
+                </div>
+                <span className="text-xs font-bold text-white">{steps[activeStep].deliverable}</span>
+              </div>
+
+              <div className="flex justify-between items-center text-xs font-semibold text-gray-400">
+                <span>Verification Time</span>
+                <span className="text-white font-bold">{steps[activeStep].timeframe}</span>
+              </div>
+            </div>
+
+            <button 
+              onClick={() => window.open('https://stratxcel.ai', '_blank')}
+              className="w-full py-3 bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] text-white font-bold rounded-xl text-xs uppercase tracking-wider active:scale-98 transition-all flex items-center justify-center gap-2"
+            >
+              <span>Initialize phase</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
   );
 };
 

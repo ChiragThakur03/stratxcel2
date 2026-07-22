@@ -622,19 +622,13 @@ const Services: React.FC = () => {
     const renderCard = (card: typeof CARDS[0], index: number, isActive = false) => (
         <div
             key={index}
-            className={
-                `${isMobile 
-                    ? `min-w-full px-4 transition-all duration-500 ${isActive ? 'opacity-100 scale-100' : 'opacity-70 scale-95'}`
-                    : 'text-center'
-                }`
-                }
+            className={`glass-card ${isMobile 
+                ? `min-w-full px-4 transition-all duration-500 ${isActive ? 'opacity-100 scale-100' : 'opacity-70 scale-95'}`
+                : 'text-center hover:border-emerald-500/35 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)] transition-all duration-300'
+            }`}
             style={{
-                background: "linear-gradient(135deg, rgba(34,193,195,0.15), rgba(253,187,45,0.10))",
-                border: "1px solid rgba(255,255,255,0.18)",
                 borderRadius: "2rem",
-                boxShadow: "0 8px 32px rgba(31, 38, 135, 0.37)",
-                backdropFilter: "blur(8px)",
-                padding: isMobile ? "2rem 1.5rem" : "1.5rem 1.25rem",
+                padding: isMobile ? "2rem 1.5rem" : "1.75rem 1.5rem",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -648,20 +642,26 @@ const Services: React.FC = () => {
                 overflow: "hidden",
             }}
         >
-            <h3 className={`font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent ${isMobile ? 'text-xl' : 'text-lg'} mt-4`}>
+            <div className="p-3 bg-white/[0.03] rounded-2xl border border-white/5 flex items-center justify-center">
+                {card.icon}
+            </div>
+            <h3 className={`font-extrabold text-white tracking-tight ${isMobile ? 'text-xl' : 'text-lg'} mt-2`}>
                 {card.title}
             </h3>
-            <ul className="text-gray-200 text-xs md:text-sm leading-relaxed text-left my-2 list-disc list-inside">
+            <ul className="text-gray-400 text-xs md:text-sm leading-relaxed text-left my-2 space-y-1">
                 {card.sub.slice(0, 3).map((item: any, i: number) => (
-                    <li key={i}>{item.title}</li>
+                    <li key={i} className="flex items-center gap-1.5 truncate">
+                        <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0" />
+                        <span className="truncate">{item.title}</span>
+                    </li>
                 ))}
-                {card.sub.length > 3 && <li className="text-gray-400">...and more</li>}
+                {card.sub.length > 3 && <li className="text-gray-500 pl-3">...and more</li>}
             </ul>
             <button
                 onClick={() => openModal(card)}
-                className={`${isMobile ? 'px-5 py-2.5 text-sm' : 'px-4 py-1.5 text-xs'} font-semibold bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-lg hover:from-purple-600 hover:to-pink-600 hover:scale-105 transition-all duration-200 mt-auto`}
+                className={`w-full ${isMobile ? 'px-5 py-3 text-sm' : 'px-4 py-2 text-xs'} font-bold bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] text-white rounded-xl shadow-lg transition-all duration-200 mt-auto active:scale-95`}
             >
-                See All
+                See All Services
             </button>
         </div>
     );
@@ -757,29 +757,29 @@ const Services: React.FC = () => {
                 {/* Enhanced Modal for card details */}
                 {selectedCard && (
                     <div 
-                        className={`fixed inset-0 z-50 flex items-center justify-center pl-40 bg-black/60 backdrop-blur-sm  transition-all duration-300 ${
+                        className={`fixed inset-0 z-50 flex items-center justify-center px-4 md:pl-48 bg-black/75 backdrop-blur-md transition-all duration-300 ${
                             isModalVisible ? 'opacity-100 visible' : 'opacity-0 invisible'
                         }`}
                         onClick={closeModal}
                     >
                         <div
-                            className={`bg-gradient-to-br from-slate-900/95 to-blue-900/90 backdrop-blur-xl border border-gray-600/30 rounded-3xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden transition-all duration-300 transform ${
+                            className={`bg-[#07070F]/95 backdrop-blur-2xl border border-white/[0.08] rounded-3xl shadow-[0_30px_70px_-10px_rgba(0,0,0,0.9)] max-w-6xl w-full max-h-[85vh] overflow-hidden transition-all duration-300 transform ${
                                 isModalVisible ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'
                             }`}
                             onClick={e => e.stopPropagation()}
                         >
                             {/* Modal Header */}
-                            <div className="flex items-center justify-between p-6 border-b border-gray-600/30">
+                            <div className="flex items-center justify-between p-6 border-b border-white/[0.08]">
                                 <div className="flex items-center gap-3">
-                                    <div className="p-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl border border-gray-600/30">
+                                    <div className="p-2.5 bg-white/[0.03] rounded-xl border border-white/[0.08]">
                                         {selectedCard.icon}
                                     </div>
-                                    <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+                                    <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
                                         {selectedCard.title}
                                     </h2>
                                 </div>
                                 <button
-                                    className="p-2 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-xl transition-all duration-200"
+                                    className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200"
                                     onClick={closeModal}
                                     aria-label="Close modal"
                                 >
@@ -788,35 +788,37 @@ const Services: React.FC = () => {
                             </div>
 
                             {/* Modal Content */}
-                            <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+                            <div className="p-6 overflow-y-auto max-h-[calc(85vh-120px)]">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {selectedCard.sub.map((item: any, i: number) => (
                                         <div
                                             key={i}
-                                            className="group bg-gradient-to-br from-white/5 to-white/10 border border-gray-600/30 rounded-2xl p-6 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 hover:transform hover:scale-105"
+                                            className="group glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between"
                                         >
-                                            {/* Service Icon */}
-                                            <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-200">
-                                                {item.icon}
+                                            <div>
+                                                {/* Service Icon */}
+                                                <div className="flex items-center justify-center w-12 h-12 bg-white/[0.03] border border-white/[0.08] rounded-xl mb-4 group-hover:scale-105 transition-transform duration-200">
+                                                    {item.icon}
+                                                </div>
+
+                                                {/* Service Title */}
+                                                <h3 className="font-extrabold text-white text-lg mb-2 group-hover:text-emerald-300 transition-colors duration-200">
+                                                    {item.title}
+                                                </h3>
+
+                                                {/* Service Description */}
+                                                <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                                                    {item.description}
+                                                </p>
                                             </div>
-
-                                            {/* Service Title */}
-                                            <h3 className="font-bold text-white text-lg mb-3 group-hover:text-blue-300 transition-colors duration-200">
-                                                {item.title}
-                                            </h3>
-
-                                            {/* Service Description */}
-                                            <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                                                {item.description}
-                                            </p>
 
                                             {/* Features */}
                                             <div className="mb-4">
-                                                <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Features</h4>
-                                                <ul className="space-y-1">
+                                                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Features</h4>
+                                                <ul className="space-y-1.5">
                                                     {item.features && item.features.map((feature: string, idx: number) => (
-                                                        <li key={idx} className="flex items-center text-sm text-green-300">
-                                                            <Check className="w-3 h-3 mr-2 flex-shrink-0" />
+                                                        <li key={idx} className="flex items-center text-xs text-emerald-300 font-medium">
+                                                            <Check className="w-3.5 h-3.5 mr-2 text-emerald-400 flex-shrink-0" />
                                                             {feature}
                                                         </li>
                                                     ))}
@@ -824,36 +826,36 @@ const Services: React.FC = () => {
                                             </div>
 
                                             {/* Pricing and Delivery */}
-                                            <div className="flex items-center justify-between mb-4 pt-4 border-t border-gray-600/30">
-                                                <div className="flex items-center text-sm">
-                                                    <DollarSign className="w-4 h-4 text-green-400 mr-1" />
-                                                    <span className="text-white font-semibold">{item.price}</span>
+                                            <div className="flex items-center justify-between mb-4 pt-4 border-t border-white/5">
+                                                <div className="flex items-center text-sm font-bold">
+                                                    <DollarSign className="w-4 h-4 text-emerald-400 mr-0.5" />
+                                                    <span className="text-white">{item.price}</span>
                                                 </div>
-                                                <div className="flex items-center text-sm">
+                                                <div className="flex items-center text-xs font-semibold">
                                                     <Clock className="w-4 h-4 text-blue-400 mr-1" />
-                                                    <span className="text-gray-300">{item.delivery}</span>
+                                                    <span className="text-gray-400">{item.delivery}</span>
                                                 </div>
                                             </div>
 
                                             {/* Action Button */}
-                                            <button className="w-full px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl text-sm font-medium hover:from-purple-600 hover:to-pink-600 transition-all duration-200 group-hover:shadow-lg group-hover:shadow-purple-500/25 flex items-center justify-center gap-2">
+                                            <button className="w-full px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-blue-600 text-white rounded-xl text-xs font-bold hover:from-emerald-700 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-emerald-500/15 flex items-center justify-center gap-1.5 active:scale-98">
                                                 Get Started
-                                                <ExternalLink className="w-4 h-4" />
+                                                <ExternalLink className="w-3.5 h-3.5" />
                                             </button>
                                         </div>
                                     ))}
                                 </div>
 
                                 {/* Modal Footer */}
-                                <div className="mt-8 pt-6 border-t border-gray-600/30 flex flex-col sm:flex-row gap-4 justify-center">
+                                <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row gap-3 justify-center">
                                     <button
-                                        className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
+                                        className="px-6 py-3 bg-gradient-to-r from-emerald-600 via-blue-600 to-indigo-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-200 text-sm active:scale-95"
                                         onClick={() => navigate('/contact')}
                                     >
                                         Request Custom Quote
                                     </button>
                                     <button
-                                        className="px-6 py-3 border border-gray-600/50 text-gray-300 font-medium rounded-xl hover:bg-gray-700/50 hover:text-white transition-all duration-200"
+                                        className="px-6 py-3 bg-white/[0.04] border border-white/[0.08] text-gray-300 font-semibold rounded-xl hover:bg-white/[0.08] hover:text-white transition-all duration-200 text-sm"
                                         onClick={closeModal}
                                     >
                                         Close

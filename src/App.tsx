@@ -50,34 +50,31 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen bg-[#06080F] text-white">
         <ParticleBackground />
-        <div className="flex">
-          <Navbar />
-          <div className="flex-1 w-full md:pl-56">
-            <Routes>
-              <Route path="/" element={
-                <>
-                  <Hero />
-                  <HowItWorks />
-                  {/* <FreeAI /> */}
-                  <Productivity/>
-                  {isMobileView ? <Services2 /> : <Services />}
-                  <About />
-                  <PremiumPlans />
-                  <ExpertConsultancy />
-                  <Contact />
-                  <Footer />
-                </>
-              } />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/expert-consultancy" element={<ExpertConsultancyPage />} />
-              <Route path="/free-ai-consultancy" element={<FreeAIPage />} />
-              <Route path="/premium-plans" element={<PremiumPlansPage />} />
-              <Route path="/services" element={<ServicesPage />} />
-            </Routes>
-          </div>
+        <Navbar />
+        <div className="w-full">
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <HowItWorks />
+                <Productivity />
+                {isMobileView ? <Services2 /> : <Services />}
+                <About />
+                <PremiumPlans />
+                <ExpertConsultancy />
+                <Contact />
+                <Footer />
+              </>
+            } />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/expert-consultancy" element={<ExpertConsultancyPage />} />
+            <Route path="/free-ai-consultancy" element={<FreeAIPage />} />
+            <Route path="/premium-plans" element={<PremiumPlansPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+          </Routes>
         </div>
       </div>
     </>
