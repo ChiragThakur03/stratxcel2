@@ -191,16 +191,6 @@ The application follows a component-driven architecture with client-side routing
    npm run preview
    ```
 
-### Environment Variables
-
-No environment variables are required for basic development. However, for API integrations:
-
-```env
-# Add any API endpoints here when needed
-VITE_API_BASE_URL=https://api.stratxcel.ai
-```
-
----
 
 ## 💻 Development
 
@@ -400,15 +390,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **StratxceL - AI-Powered Business Strategy**
 
 - 🌐 Website: [stratxcel2.vercel.app](https://stratxcel2.vercel.app)
-- 📧 Email: contact@stratxcel.ai
 - 🐙 GitHub: [@ChiragThakur03](https://github.com/ChiragThakur03)
 
 ---
-
-<div align="center">
-
-**Built with ❤️ using React, TypeScript, and Tailwind CSS**
-
-*Democratizing Strategic Business Intelligence Through AI Innovation*
-
-</div>
