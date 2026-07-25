@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Services2.css'
+import './Services2.css';
 
 const SERVICES = [
   'AI-Powered Business Automation',
@@ -19,15 +19,13 @@ const Services2: React.FC = () => {
   const navigate = useNavigate();
   const marqueeRef = useRef<HTMLDivElement>(null);
 
-  // Duplicate the services for infinite effect
   const sliderServices = [...SERVICES, ...SERVICES];
 
   useEffect(() => {
-    // Pause on hover (optional)
     const marquee = marqueeRef.current;
     if (!marquee) return;
-    const handleMouseEnter = () => marquee.style.animationPlayState = 'paused';
-    const handleMouseLeave = () => marquee.style.animationPlayState = 'running';
+    const handleMouseEnter = () => (marquee.style.animationPlayState = 'paused');
+    const handleMouseLeave = () => (marquee.style.animationPlayState = 'running');
     marquee.addEventListener('mouseenter', handleMouseEnter);
     marquee.addEventListener('mouseleave', handleMouseLeave);
     return () => {
@@ -37,17 +35,18 @@ const Services2: React.FC = () => {
   }, []);
 
   return (
-    <section id='services2' className="relative z-10 py-12 px-4 sm:px-6 lg:px-8 bg-transparent">
+    <section id="services2" className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 bg-[#021C2A]">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
-            Our Services
+        <div className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 tracking-tight">
+            Our Core Services
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Explore our range of business solutions designed to accelerate your growth.
+          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+            Explore our specialized business solutions engineered to accelerate your organization's growth.
           </p>
         </div>
-        {/* Infinite Marquee Slider */}
+
+        {/* Marquee Slider */}
         <div className="relative w-full overflow-hidden select-none">
           <div
             ref={marqueeRef}
@@ -60,32 +59,33 @@ const Services2: React.FC = () => {
             {sliderServices.map((title, idx) => (
               <div
                 key={idx}
-                className="flex-shrink-0 w-72 bg-gray-800/70 border border-purple-500/20 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:shadow-purple-500/20 transition-shadow duration-300 group hover:scale-105"
+                className="flex-shrink-0 w-72 bg-[#04344C] border border-[#B0EDF9]/30 rounded-2xl p-6 flex flex-col items-center text-center shadow-lg hover:border-[#B0EDF9] transition-all duration-300 group"
               >
-                <h3 className="text-lg font-semibold text-white mb-6 group-hover:text-purple-300 transition-colors duration-200">
+                <h3 className="text-base font-bold text-white mb-6 group-hover:text-[#B0EDF9] transition-colors duration-200">
                   {title}
                 </h3>
                 <button
-                  className="mt-auto px-5 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-medium shadow-md hover:from-purple-600 hover:to-pink-600 transition-all duration-200 active:scale-95"
+                  className="mt-auto px-5 py-2.5 bg-[#B0EDF9] text-[#04344C] font-bold rounded-xl text-xs uppercase tracking-wider hover:bg-white transition-all duration-200 active:scale-95"
                   onClick={() => navigate('/services')}
                 >
-                  Explore More
+                  Explore Service
                 </button>
               </div>
             ))}
           </div>
         </div>
-        {/* Explore All Services Button */}
-        <div className="flex justify-center mt-8">
+
+        {/* Explore Button */}
+        <div className="flex justify-center mt-10">
           <button
             onClick={() => navigate('/services')}
-            className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-200 text-lg md:text-xl active:scale-95"
+            className="px-8 py-3.5 bg-[#B0EDF9] hover:bg-white text-[#04344C] font-bold rounded-xl text-xs uppercase tracking-wider shadow-lg active:scale-95 transition-all"
           >
             Explore All Services
           </button>
         </div>
       </div>
-      {/* Marquee Keyframes */}
+
       <style>{`
         @keyframes marquee {
           0% { transform: translateX(0); }

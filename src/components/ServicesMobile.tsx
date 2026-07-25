@@ -63,20 +63,20 @@ const ServicesMobile: React.FC = () => {
   };
 
   return (
-    <section className="block lg:hidden px-4 py-10">
+    <section className="block lg:hidden px-4 py-10 bg-[#021C2A]">
       <div className="relative">
         <div className="overflow-hidden">
           <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
             {CARDS.map((card, index) => (
               <div key={index} className="min-w-full px-4">
-                <div className="bg-white/5 border border-white/10 backdrop-blur-lg rounded-2xl shadow-lg p-6 flex flex-col items-center text-center gap-4">
-                  <h3 className="text-lg font-semibold bg-gradient-to-r from-green-400 to-blue-500 text-transparent bg-clip-text">
+                <div className="bg-[#04344C] border border-[#B0EDF9]/30 rounded-2xl p-6 flex flex-col items-center text-center gap-4">
+                  <h3 className="text-lg font-bold text-white">
                     {card.title}
                   </h3>
-                  <p className="text-sm text-gray-300 leading-relaxed">
+                  <p className="text-xs text-slate-300 leading-relaxed">
                     {card.description}
                   </p>
-                  <button className="text-sm px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full shadow-md hover:from-purple-600 hover:to-pink-600 transition-all">
+                  <button className="text-xs font-bold uppercase tracking-wider px-5 py-2.5 bg-[#B0EDF9] text-[#04344C] rounded-xl hover:bg-white transition-all shadow-md active:scale-95">
                     {card.buttonText}
                   </button>
                 </div>
@@ -88,13 +88,13 @@ const ServicesMobile: React.FC = () => {
         {/* Navigation */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/40 p-2 rounded-full text-white"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#021C2A] border border-[#B0EDF9]/30 p-2 rounded-full text-[#B0EDF9]"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/40 p-2 rounded-full text-white"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#021C2A] border border-[#B0EDF9]/30 p-2 rounded-full text-[#B0EDF9]"
         >
           <ChevronRight className="w-4 h-4" />
         </button>
@@ -105,7 +105,7 @@ const ServicesMobile: React.FC = () => {
             <span
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full ${index === currentIndex ? 'bg-blue-400' : 'bg-gray-600'} cursor-pointer`}
+              className={`w-2 h-2 rounded-full ${index === currentIndex ? 'bg-[#B0EDF9]' : 'bg-[#04344C]'} cursor-pointer`}
             />
           ))}
         </div>

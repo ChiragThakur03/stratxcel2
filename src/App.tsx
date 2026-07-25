@@ -1,28 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
 import ParticleBackground from './components/ParticleBackground';
-import FreeAI from './components/FreeAI';
-import About from './components/About';
-import PremiumPlans from './components/PremiumPlans';
-import ExpertConsultancy from './components/ExpertConsultancy';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Services from './components/Services';
-import AboutPage from './components/About';
-import ContactPage from './pages/Contact';
-import ExpertConsultancyPage from './components/ExpertConsultancy';
-import FreeAIPage from './components/Productivity';
-import PremiumPlansPage from './components/PremiumPlans';
-import ServicesMobile from './components/ServicesMobile';
-import ServicesPage from './pages/Services';
 import Services2 from './components/Services2';
 import { useLandingScrollRestore } from './hooks/useLandingScrollRestore';
-import Productivity from './components/Productivity';
 
+// Eager loaded landing sections
+import AboutSection from './components/About';
+import PremiumPlansSection from './components/PremiumPlans';
+import ExpertConsultancySection from './components/ExpertConsultancy';
+import ContactSection from './components/Contact';
+import ServicesSection from './components/Services';
+import ProductivitySection from './components/Productivity';
+
+// Lazy loaded standalone page routes
+const ContactPage = lazy(() => import('./pages/Contact'));
+const ServicesPage = lazy(() => import('./pages/Services'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,10 +28,17 @@ function ScrollToTop() {
   return null;
 }
 
+function PageLoader() {
+  return (
+    <div className="min-h-[50vh] flex items-center justify-center bg-[#021C2A]">
+      <div className="w-8 h-8 border-2 border-[#B0EDF9] border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
+
 function App() {
   useLandingScrollRestore();
 
-  // 👇 Move responsive logic here
   const [isMobileView, setIsMobileView] = useState<boolean>(window.innerWidth < 1000);
 
   useEffect(() => {
@@ -50,32 +53,34 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <div className="min-h-screen bg-[#06080F] text-white">
+      <div className="min-h-screen bg-[#021C2A] text-white flex flex-col justify-between">
         <ParticleBackground />
         <Navbar />
-        <div className="w-full">
-          <Routes>
-            <Route path="/" element={
-              <>
-                <Hero />
-                <HowItWorks />
-                <Productivity />
-                {isMobileView ? <Services2 /> : <Services />}
-                <About />
-                <PremiumPlans />
-                <ExpertConsultancy />
-                <Contact />
-                <Footer />
-              </>
-            } />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/expert-consultancy" element={<ExpertConsultancyPage />} />
-            <Route path="/free-ai-consultancy" element={<FreeAIPage />} />
-            <Route path="/premium-plans" element={<PremiumPlansPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-          </Routes>
-        </div>
+        <main className="w-full flex-grow">
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <Hero />
+                  <HowItWorks />
+                  <ProductivitySection />
+                  <ServicesSection />
+                  <AboutSection />
+                  <PremiumPlansSection />
+                  <ExpertConsultancySection />
+                  <ContactSection />
+                </>
+              } />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/about" element={<AboutSection />} />
+              <Route path="/expert-consultancy" element={<ExpertConsultancySection />} />
+              <Route path="/free-ai-consultancy" element={<ProductivitySection />} />
+              <Route path="/premium-plans" element={<PremiumPlansSection />} />
+              <Route path="/services" element={<ServicesPage />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
       </div>
     </>
   );

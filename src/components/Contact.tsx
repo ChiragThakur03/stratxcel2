@@ -20,7 +20,6 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
     setFormSubmitted(true);
     setTimeout(() => {
       setFormSubmitted(false);
@@ -30,25 +29,25 @@ const Contact: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="w-5 h-5 text-emerald-400" />,
+      icon: <Mail className="w-5 h-5 text-[#B0EDF9]" />,
       title: "Email Us",
       details: "hello@stratxcel.ai",
       description: "Send strategy questions directly."
     },
     {
-      icon: <Phone className="w-5 h-5 text-emerald-400" />,
+      icon: <Phone className="w-5 h-5 text-[#B0EDF9]" />,
       title: "Call Us",
       details: "+1 (555) 123-4567",
       description: "Direct analyst dispatch office."
     },
     {
-      icon: <MapPin className="w-5 h-5 text-emerald-400" />,
+      icon: <MapPin className="w-5 h-5 text-[#B0EDF9]" />,
       title: "Visit Headquarters",
       details: "San Francisco, CA",
       description: "Executive innovation hub."
     },
     {
-      icon: <Clock className="w-5 h-5 text-emerald-400" />,
+      icon: <Clock className="w-5 h-5 text-[#B0EDF9]" />,
       title: "Active Hours",
       details: "Mon-Fri 9AM-6PM PST",
       description: "Consultation pipeline is open."
@@ -75,7 +74,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="relative z-10 py-24 px-6 sm:px-8 lg:px-12 bg-[#06080F]">
+    <section id="contact" className="relative z-10 py-24 px-6 sm:px-8 lg:px-12 bg-[#021C2A]">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
@@ -86,14 +85,14 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex items-center px-4 py-2 bg-white/[0.03] backdrop-blur-md border border-white/[0.08] rounded-full text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-6">
-            <MessageSquare className="w-4 h-4 mr-2 text-emerald-400" />
+          <div className="inline-flex items-center px-4 py-2 bg-[#04344C]/60 backdrop-blur-xl border border-[#B0EDF9]/30 rounded-full text-[#B0EDF9] text-xs font-semibold uppercase tracking-wider mb-6">
+            <MessageSquare className="w-4 h-4 mr-2 text-[#B0EDF9]" />
             Connect Team
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-white">
             Contact Strategy
           </h2>
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+          <p className="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
             Ready to integrate custom AI models into your pipeline? Message our consultants today.
           </p>
         </motion.div>
@@ -103,7 +102,7 @@ const Contact: React.FC = () => {
           
           {/* Form Card (width 7/12) */}
           <motion.div
-            className="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8 relative overflow-hidden"
+            className="lg:col-span-7 glass-card bg-[#04344C]/80 border border-[#B0EDF9]/30 rounded-3xl p-6 sm:p-8 relative overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -121,7 +120,7 @@ const Contact: React.FC = () => {
                 >
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+                      <label htmlFor="name" className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
                         Full Name
                       </label>
                       <input
@@ -130,13 +129,13 @@ const Contact: React.FC = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-white/[0.02] border border-white/[0.08] hover:border-white/20 focus:border-emerald-500/50 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-emerald-500/30 text-sm transition-all"
+                        className="w-full px-4 py-3 bg-[#021C2A] border border-[#B0EDF9]/20 focus:border-[#B0EDF9] rounded-xl text-white placeholder-slate-500 focus:outline-none text-xs transition-all"
                         placeholder="John Doe"
                         required
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+                      <label htmlFor="email" className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
                         Email Address
                       </label>
                       <input
@@ -145,7 +144,7 @@ const Contact: React.FC = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-white/[0.02] border border-white/[0.08] hover:border-white/20 focus:border-emerald-500/50 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-emerald-500/30 text-sm transition-all"
+                        className="w-full px-4 py-3 bg-[#021C2A] border border-[#B0EDF9]/20 focus:border-[#B0EDF9] rounded-xl text-white placeholder-slate-500 focus:outline-none text-xs transition-all"
                         placeholder="john@company.com"
                         required
                       />
@@ -153,7 +152,7 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="company" className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+                    <label htmlFor="company" className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
                       Company Name
                     </label>
                     <input
@@ -162,13 +161,13 @@ const Contact: React.FC = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/[0.02] border border-white/[0.08] hover:border-white/20 focus:border-emerald-500/50 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-emerald-500/30 text-sm transition-all"
+                      className="w-full px-4 py-3 bg-[#021C2A] border border-[#B0EDF9]/20 focus:border-[#B0EDF9] rounded-xl text-white placeholder-slate-500 focus:outline-none text-xs transition-all"
                       placeholder="Your Company"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+                    <label htmlFor="message" className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
                       Project Goals / Message
                     </label>
                     <textarea
@@ -177,7 +176,7 @@ const Contact: React.FC = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       rows={4}
-                      className="w-full px-4 py-3 bg-white/[0.02] border border-white/[0.08] hover:border-white/20 focus:border-emerald-500/50 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-emerald-500/30 text-sm transition-all resize-none"
+                      className="w-full px-4 py-3 bg-[#021C2A] border border-[#B0EDF9]/20 focus:border-[#B0EDF9] rounded-xl text-white placeholder-slate-500 focus:outline-none text-xs transition-all resize-none"
                       placeholder="Describe target velocity constraints..."
                       required
                     />
@@ -185,13 +184,12 @@ const Contact: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="group relative w-full overflow-hidden bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-500 text-white py-3.5 px-6 rounded-xl text-sm font-bold shadow-lg hover:shadow-emerald-500/20 flex items-center justify-center gap-2 active:scale-98 transition-transform duration-200"
+                    className="group relative w-full overflow-hidden bg-[#B0EDF9] hover:bg-white text-[#04344C] py-4 px-6 rounded-xl text-xs font-bold uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 active:scale-95 transition-all"
                   >
                     <span className="relative z-10 flex items-center gap-2">
                       Send Strategy Request
                       <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
                     </span>
-                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-0 bg-gradient-to-r from-blue-500 via-teal-600 to-emerald-600 transition-transform duration-300 z-0" />
                   </button>
                 </motion.form>
               ) : (
@@ -201,11 +199,11 @@ const Contact: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="w-12 h-12 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mb-4">
-                    <CheckCircle2 className="w-6 h-6 text-emerald-400" />
+                  <div className="w-12 h-12 bg-[#021C2A] border border-[#B0EDF9]/40 rounded-full flex items-center justify-center mb-4">
+                    <CheckCircle2 className="w-6 h-6 text-[#B0EDF9]" />
                   </div>
                   <h4 className="text-lg font-bold text-white mb-2">Message Sent</h4>
-                  <p className="text-gray-400 text-xs sm:text-sm max-w-xs leading-relaxed">
+                  <p className="text-slate-300 text-xs max-w-xs leading-relaxed">
                     Strategy request received. An operations manager will follow up within 2 hours.
                   </p>
                 </motion.div>
@@ -220,27 +218,30 @@ const Contact: React.FC = () => {
             <div className="space-y-6">
               {contactInfo.map((info, idx) => (
                 <div key={idx} className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-white/[0.02] border border-white/[0.08] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-[#04344C] border border-[#B0EDF9]/30 rounded-xl flex items-center justify-center flex-shrink-0">
                     {info.icon}
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-white mb-0.5">{info.title}</h4>
-                    <p className="text-emerald-300 text-xs sm:text-sm font-bold tracking-tight mb-0.5">{info.details}</p>
-                    <p className="text-gray-500 text-[10px] sm:text-xs font-semibold">{info.description}</p>
+                    <p className="text-[#B0EDF9] text-xs font-bold tracking-tight mb-0.5">{info.details}</p>
+                    <p className="text-slate-300 text-xs font-semibold">{info.description}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Live Chat CTA Panel */}
-            <div className="glass-card border-emerald-500/20 rounded-2xl p-5 relative overflow-hidden flex flex-col justify-between mt-8">
+            {/* Live Support Card */}
+            <div className="glass-card bg-[#04344C]/90 border border-[#B0EDF9]/30 rounded-2xl p-5 relative overflow-hidden flex flex-col justify-between mt-8">
               <div>
                 <h4 className="text-sm font-extrabold text-white mb-1">Instant Support Chat</h4>
-                <p className="text-gray-400 text-[11px] sm:text-xs leading-relaxed">
+                <p className="text-slate-300 text-xs leading-relaxed">
                   Active consultants are ready to audit draft reports in real-time.
                 </p>
               </div>
-              <button className="mt-4 inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 text-xs font-bold transition-colors group">
+              <button 
+                onClick={() => window.open('https://stratxcel.ai', '_blank')}
+                className="mt-4 inline-flex items-center gap-1.5 text-[#B0EDF9] hover:text-white text-xs font-bold transition-colors group"
+              >
                 Open Chat
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -259,12 +260,12 @@ const Contact: React.FC = () => {
             {faqs.map((faq, idx) => (
               <div 
                 key={idx} 
-                className="glass-card glass-card-hover rounded-2xl p-6"
+                className="glass-card bg-[#04344C]/60 border border-[#B0EDF9]/20 hover:border-[#B0EDF9]/50 rounded-2xl p-6 transition-all"
               >
                 <h4 className="text-base font-bold text-white mb-2 leading-tight">
                   {faq.question}
                 </h4>
-                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                   {faq.answer}
                 </p>
               </div>

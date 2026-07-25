@@ -47,10 +47,10 @@ const Footer: React.FC = () => {
   };
 
   const socialLinks = [
-    { icon: <Twitter className="w-4 h-4 sm:w-5 sm:h-5" />, href: '#', label: 'Twitter' },
-    { icon: <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />, href: '#', label: 'LinkedIn' },
-    { icon: <Github className="w-4 h-4 sm:w-5 sm:h-5" />, href: '#', label: 'GitHub' },
-    { icon: <Mail className="w-4 h-4 sm:w-5 sm:h-5" />, href: '#', label: 'Email' }
+    { icon: <Twitter className="w-5 h-5" />, href: '#', label: 'Twitter' },
+    { icon: <Linkedin className="w-5 h-5" />, href: '#', label: 'LinkedIn' },
+    { icon: <Github className="w-5 h-5" />, href: '#', label: 'GitHub' },
+    { icon: <Mail className="w-5 h-5" />, href: '#', label: 'Email' }
   ];
 
   const renderLinks = (links: FooterLink[]) => (
@@ -60,14 +60,14 @@ const Footer: React.FC = () => {
           {'id' in link ? (
             <button
               onClick={() => scrollToSection(link.id)}
-              className="text-gray-400 hover:text-white transition-colors duration-200 text-left text-xs sm:text-sm leading-snug sm:leading-relaxed"
+              className="text-slate-300 hover:text-[#B0EDF9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B0EDF9] rounded-sm transition-colors duration-200 text-left text-xs leading-snug sm:leading-relaxed"
             >
               {link.label}
             </button>
           ) : (
             <a
               href={link.href}
-              className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm leading-snug sm:leading-relaxed"
+              className="text-slate-300 hover:text-[#B0EDF9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B0EDF9] rounded-sm transition-colors duration-200 text-xs leading-snug sm:leading-relaxed"
             >
               {link.label}
             </a>
@@ -78,111 +78,63 @@ const Footer: React.FC = () => {
   );
 
   return (
-    <footer className="relative z-10 bg-gray-900/50 backdrop-blur-sm border-t border-gray-700/50">
+    <footer className="relative z-10 bg-[#021C2A] border-t border-[#B0EDF9]/20">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 mb-8 sm:mb-12"
-          initial="hidden"
-          whileInView="visible"
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.15 } }
-          }}
-          viewport={{ once: true }}
-        >
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {/* Brand */}
-          <motion.div
-            className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-2"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center space-x-2 mb-4 sm:mb-6">
-              <div className="relative">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
-                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-500 rounded-full blur-md opacity-50"></div>
+          <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-2">
+            <div className="flex items-center space-x-2.5 mb-4 sm:mb-6">
+              <div className="w-9 h-9 bg-[#04344C] border border-[#B0EDF9]/30 rounded-xl flex items-center justify-center">
+                <Sparkles className="w-4.5 h-4.5 text-[#B0EDF9]" />
               </div>
-              <span className="text-lg sm:text-xl font-bold text-white">Stratxcel.AI</span>
+              <span className="text-xl font-extrabold text-white">Strat<span className="text-[#B0EDF9]">xce</span>L</span>
             </div>
-            <p className="text-gray-400 mb-4 sm:mb-6 max-w-sm text-xs sm:text-base leading-snug sm:leading-relaxed">
+            <p className="text-slate-300 mb-4 sm:mb-6 max-w-sm text-xs leading-relaxed">
               Transform your business with AI-powered strategy. From instant insights to expert consultation — your complete business strategy solution.
             </p>
-            <div className="flex space-x-3 sm:space-x-4">
+            <div className="flex space-x-3">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-purple-600 rounded-full flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200 active:scale-95"
+                  className="w-11 h-11 bg-[#04344C] border border-[#B0EDF9]/20 hover:border-[#B0EDF9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B0EDF9] rounded-xl flex items-center justify-center text-slate-300 hover:text-[#B0EDF9] transition-all duration-200 active:scale-95"
                   aria-label={social.label}
                 >
                   {social.icon}
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Columns */}
-          <motion.div
-            className="col-span-1"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Product</h3>
+          <div className="col-span-1">
+            <h3 className="text-[#B0EDF9] font-bold uppercase tracking-wider mb-3 sm:mb-4 text-xs">Product</h3>
             {renderLinks(footerLinks.product)}
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="col-span-1"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Company</h3>
+          <div className="col-span-1">
+            <h3 className="text-[#B0EDF9] font-bold uppercase tracking-wider mb-3 sm:mb-4 text-xs">Company</h3>
             {renderLinks(footerLinks.company)}
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="col-span-1"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Resources</h3>
+          <div className="col-span-1">
+            <h3 className="text-[#B0EDF9] font-bold uppercase tracking-wider mb-3 sm:mb-4 text-xs">Resources</h3>
             {renderLinks(footerLinks.resources)}
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="col-span-1"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Legal</h3>
+          <div className="col-span-1">
+            <h3 className="text-[#B0EDF9] font-bold uppercase tracking-wider mb-3 sm:mb-4 text-xs">Legal</h3>
             {renderLinks(footerLinks.legal)}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Newsletter */}
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start lg:items-center mb-8 sm:mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
-          viewport={{ once: true }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start lg:items-center mb-8 sm:mb-12 pt-8 border-t border-[#B0EDF9]/15">
           <div className="mb-4 lg:mb-0">
-            <h3 className="text-lg sm:text-2xl font-bold text-white mb-2">
+            <h3 className="text-lg sm:text-xl font-extrabold text-white mb-1">
               Stay Updated
             </h3>
-            <p className="text-gray-300 text-sm sm:text-base leading-snug sm:leading-relaxed">
+            <p className="text-slate-300 text-xs leading-relaxed">
               Get the latest insights on AI-powered business strategy delivered to your inbox.
             </p>
           </div>
@@ -190,29 +142,23 @@ const Footer: React.FC = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-3 py-2.5 sm:px-4 sm:py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
+              className="flex-1 px-4 py-3 bg-[#04344C] border border-[#B0EDF9]/20 rounded-xl text-white placeholder-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B0EDF9] text-xs transition-all"
             />
-            <button className="px-4 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-purple-700 transition-all duration-200 whitespace-nowrap text-sm sm:text-base active:scale-95">
+            <button className="px-6 py-3 bg-[#B0EDF9] text-[#04344C] font-bold uppercase tracking-wider rounded-xl hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all whitespace-nowrap text-xs active:scale-95">
               Subscribe
             </button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Bottom Bar */}
-        <motion.div
-          className="pt-6 sm:pt-8 border-t border-gray-700/50 flex flex-col sm:flex-row justify-between items-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-left">
-            © 2025 Stratxcel. All rights reserved.
+        <div className="pt-6 border-t border-[#B0EDF9]/15 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-slate-400 text-xs text-center sm:text-left">
+            © 2026 StratxceL. All rights reserved.
           </p>
-          <div className="flex items-center space-x-3 sm:space-x-6 text-xs sm:text-sm text-gray-400">
-            <span className="text-center">Made with ❤️ by TRUSTING BRAINS</span>
+          <div className="flex items-center space-x-3 text-xs text-slate-400">
+            <span>Made with ❤️ by TRUSTING BRAINS</span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
