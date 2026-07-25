@@ -1,305 +1,215 @@
 import React, { useState } from 'react';
-import { Check, Crown, Rocket, Building2, Star, Zap, Shield, Users, ArrowRight } from 'lucide-react';
+import { 
+  Check, Crown, Rocket, Building2, Star, Zap, Shield, Users, 
+  ArrowRight, Sparkles, Sliders, CheckCircle2, HelpCircle
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const PremiumPlans: React.FC = () => {
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
+export const PremiumPlans: React.FC = () => {
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly');
+  const [teamSize, setTeamSize] = useState<number>(5);
 
   const plans = [
     {
-      name: "Starter",
-      icon: <Rocket className="w-6 h-6 text-[#B0EDF9]" />,
+      id: "starter",
+      name: "Starter Execution",
+      badge: "Growth Stage",
+      icon: <Rocket className="w-6 h-6 text-cyan-400" />,
       monthlyPrice: 99,
       yearlyPrice: 79,
-      description: "Ideal for growth-stage startups launching AI-driven strategy pipelines.",
+      description: "Designed for agile startups and founders launching AI-driven market telemetry.",
+      accentClass: "border-cyan-500/40 hover:border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.15)]",
+      headerBg: "bg-cyan-950/40 border-cyan-500/30",
+      buttonStyle: "bg-cyan-400 text-[#04344C] hover:bg-white font-black",
       features: [
-        "Real-Time AI Telemetry Dashboard",
-        "Monthly Strategic Audits",
-        "Competitor Matrix Insights",
+        "Real-Time AI Competitor Telemetry",
+        "Monthly Automated Strategic Audits",
+        "Competitor Positioning Matrix",
         "Up to 5 Team Seats",
         "Standard Executive PDF Exports",
-        "24/7 Priority Email Support"
-      ],
-      popular: false,
-      borderColor: "border-[#B0EDF9]/20 hover:border-[#B0EDF9]/60",
-      buttonStyle: "bg-[#021C2A]/60 border border-[#B0EDF9]/30 hover:bg-[#021C2A] text-[#B0EDF9]",
-      savings: "Save $240/year"
+        "Priority Email Support (24h SLA)"
+      ]
     },
     {
-      name: "Professional",
+      id: "pro",
+      name: "Professional Scale",
+      badge: "MOST POPULAR",
       icon: <Crown className="w-6 h-6 text-[#04344C]" />,
       monthlyPrice: 299,
       yearlyPrice: 239,
-      description: "Optimized for scaling organizations requiring custom strategy execution & expert consulting.",
+      description: "Optimized for scaling organizations requiring custom strategy execution & senior advisor reviews.",
+      accentClass: "border-[#B0EDF9] shadow-[0_0_35px_rgba(176,237,249,0.3)] scale-[1.03] z-10",
+      headerBg: "bg-gradient-to-r from-[#04344C] to-[#085379] border-[#B0EDF9]/50",
+      buttonStyle: "bg-[#B0EDF9] text-[#04344C] hover:bg-white font-black shadow-lg shadow-[#B0EDF9]/30",
       features: [
-        "Everything in Starter",
-        "Bi-Weekly Senior Consultant Synch",
-        "Custom KPI Telemetry Tracking",
-        "Priority Support (4h SLA)",
+        "Everything in Starter Execution",
+        "Bi-Weekly Senior Strategy Director Review",
+        "Custom KPI & Telemetry Triggers",
         "Up to 25 Team Seats",
-        "Full API & Webhook Access",
-        "White-Label Reporting"
-      ],
-      popular: true,
-      borderColor: "border-[#B0EDF9] shadow-[0_0_35px_rgba(176,237,249,0.25)]",
-      buttonStyle: "bg-[#B0EDF9] hover:bg-white text-[#04344C] font-bold shadow-lg",
-      savings: "Save $720/year"
+        "Full API & Webhook Suite Access",
+        "White-Label Executive Reports",
+        "Priority SLA Support (4h Window)"
+      ]
     },
     {
-      name: "Enterprise",
-      icon: <Building2 className="w-6 h-6 text-[#B0EDF9]" />,
+      id: "enterprise",
+      name: "Enterprise Sovereign",
+      badge: "Custom Fine-Tuned",
+      icon: <Building2 className="w-6 h-6 text-amber-400" />,
       monthlyPrice: 999,
       yearlyPrice: 799,
-      description: "Unlimited AI capacity, custom model fine-tuning, and dedicated Chief Strategy Advisor.",
+      description: "Unlimited AI model capacity, fine-tuned corporate telemetry, and dedicated Chief Advisor.",
+      accentClass: "border-amber-500/40 hover:border-amber-400 shadow-[0_0_25px_rgba(245,158,11,0.15)]",
+      headerBg: "bg-amber-950/30 border-amber-500/30",
+      buttonStyle: "bg-amber-400 text-[#04344C] hover:bg-white font-black shadow-lg shadow-amber-500/20",
       features: [
-        "Everything in Professional",
-        "Dedicated Chief Strategist Advisor",
-        "Daily Market Trigger Alerts",
-        "Custom AI Model Fine-Tuning",
-        "CRM & Salesforce Integrations",
-        "Unlimited Team Seats",
-        "On-Premise & Private Cloud Option"
-      ],
-      popular: false,
-      borderColor: "border-[#B0EDF9]/20 hover:border-[#B0EDF9]/60",
-      buttonStyle: "bg-[#021C2A]/60 border border-[#B0EDF9]/30 hover:bg-[#021C2A] text-[#B0EDF9]",
-      savings: "Save $2,400/year"
-    }
-  ];
-
-  const featuresList = [
-    {
-      icon: <Shield className="w-5 h-5 text-[#B0EDF9]" />,
-      title: "Bank-Grade Encryption",
-      description: "SOC2 compliance, end-to-end data encryption, and secure cloud infrastructure."
-    },
-    {
-      icon: <Zap className="w-5 h-5 text-[#B0EDF9]" />,
-      title: "Real-time Intelligence Triggers",
-      description: "Receive instant notifications on competitor pivots and market shifts."
-    },
-    {
-      icon: <Users className="w-5 h-5 text-[#B0EDF9]" />,
-      title: "Seamless Advisor Hand-offs",
-      description: "Transition AI telemetry directly into senior human strategist consultation."
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart Inc.",
-      content: "StratxceL transformed our market expansion strategy. Combining AI analytics with human consultant validation gave us 10x confidence.",
-      rating: 5,
-      avatar: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=100"
-    },
-    {
-      name: "Michael Chen",
-      role: "COO, Growth Dynamics",
-      content: "The ROI we achieved on the Professional plan exceeded expectations. The weekly consultant review is game-changing.",
-      rating: 5,
-      avatar: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100"
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "VP Strategy, InnovateCorp",
-      content: "Dedicated on-demand strategist feedback completely revolutionized how we present growth projections to our board.",
-      rating: 5,
-      avatar: "https://images.pexels.com/photos/3756681/pexels-photo-3756681.jpeg?auto=compress&cs=tinysrgb&w=100"
+        "Everything in Professional Scale",
+        "Dedicated Chief Strategy Advisor (Ex-McKinsey)",
+        "Custom Fine-Tuning on Corporate Data",
+        "CRM, Salesforce & HubSpot Full Integration",
+        "Unlimited Team & Workspace Seats",
+        "Private Cloud & On-Premise Deployment",
+        "Dedicated 24/7 Hotline & 1h SLA"
+      ]
     }
   ];
 
   return (
-    <section id="premium-plans" className="relative z-10 py-24 px-6 sm:px-8 lg:px-12 bg-[#021C2A]">
-      {/* Glow Effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-[#B0EDF9]/10 rounded-full blur-[150px]" />
-        <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[600px] bg-[#04344C]/60 rounded-full blur-[140px]" />
-      </div>
+    <section id="premium-plans" className="relative z-10 py-24 px-4 sm:px-6 lg:px-12 bg-[#021C2A] overflow-hidden">
+      
+      {/* Background Radial Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#B0EDF9]/5 rounded-full blur-[170px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-20 flex flex-col items-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          viewport={{ once: true }}
-        >
-          <div className="inline-flex items-center px-4 py-2 bg-[#04344C]/60 backdrop-blur-xl border border-[#B0EDF9]/30 rounded-full text-[#B0EDF9] text-xs font-semibold uppercase tracking-wider mb-6">
-            <Crown className="w-4 h-4 mr-2 text-[#B0EDF9]" />
-            Transparent Pricing
+      <div className="max-w-7xl mx-auto relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center mb-16 flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#04344C]/80 border border-[#B0EDF9]/30 rounded-full text-[#B0EDF9] text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-md">
+            <Crown className="w-4 h-4 text-[#B0EDF9]" />
+            Transparent Scale Pricing
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-white">
+          
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6 text-white">
             Flexible Strategy Pricing
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed mb-10">
-            Scale your business strategy seamlessly. Select the subscription plan tailored to your team's velocity.
+          
+          <p className="text-slate-300 text-sm sm:text-base md:text-lg max-w-3xl leading-relaxed">
+            Choose the subscription plan aligned with your execution velocity. All plans include automated telemetry audits.
           </p>
 
-          {/* Toggle Track */}
-          <div className="relative inline-flex bg-[#04344C] border border-[#B0EDF9]/30 p-1.5 rounded-2xl backdrop-blur-xl">
+          {/* Billing Switcher Toggle */}
+          <div className="mt-8 inline-flex items-center gap-3 p-1.5 bg-[#04344C]/80 border border-[#B0EDF9]/30 rounded-2xl backdrop-blur-md">
             <button
               onClick={() => setBillingCycle('monthly')}
-              className={`relative px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 z-10 ${
-                billingCycle === 'monthly' ? 'text-[#04344C]' : 'text-slate-300 hover:text-white'
+              className={`px-6 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all ${
+                billingCycle === 'monthly' ? 'bg-[#B0EDF9] text-[#04344C]' : 'text-slate-300 hover:text-white'
               }`}
             >
-              {billingCycle === 'monthly' && (
-                <motion.div
-                  layoutId="billingPill"
-                  className="absolute inset-0 bg-[#B0EDF9] rounded-xl shadow-lg z-0"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">Monthly Billing</span>
+              Monthly Billing
             </button>
+
             <button
               onClick={() => setBillingCycle('yearly')}
-              className={`relative px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 z-10 ${
-                billingCycle === 'yearly' ? 'text-[#04344C]' : 'text-slate-300 hover:text-white'
+              className={`px-6 py-2.5 rounded-xl text-xs md:text-sm font-bold flex items-center gap-2 transition-all ${
+                billingCycle === 'yearly' ? 'bg-[#B0EDF9] text-[#04344C]' : 'text-slate-300 hover:text-white'
               }`}
             >
-              {billingCycle === 'yearly' && (
-                <motion.div
-                  layoutId="billingPill"
-                  className="absolute inset-0 bg-[#B0EDF9] rounded-xl shadow-lg z-0"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10 flex items-center gap-1.5">
-                Yearly Billing
-                <span className="bg-[#04344C] border border-[#04344C] text-[#B0EDF9] text-xs px-2 py-0.5 rounded-full font-bold">
-                  -20% OFF
-                </span>
+              <span>Yearly Billing</span>
+              <span className="px-2 py-0.5 bg-[#04344C] text-[#B0EDF9] text-[10px] font-black rounded-full border border-[#B0EDF9]/30">
+                SAVE 20%
               </span>
             </button>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Plans Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-24">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={index}
-              className={`relative glass-card ${plan.borderColor} bg-[#04344C]/70 backdrop-blur-2xl rounded-3xl p-8 transition-all duration-500 flex flex-col justify-between overflow-hidden group ${
-                plan.popular ? 'lg:scale-[1.03]' : 'hover:scale-[1.01]'
-              }`}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              {/* Popular Tag */}
-              {plan.popular && (
-                <div className="absolute top-4 right-4 bg-[#B0EDF9] text-[#04344C] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-lg">
-                  Most Popular
-                </div>
-              )}
+        {/* Pricing Cards Grid (Distinct Card Aesthetics per Tier) */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-16">
+          {plans.map((p) => {
+            const price = billingCycle === 'yearly' ? p.yearlyPrice : p.monthlyPrice;
+            const isPro = p.id === 'pro';
 
-              {/* Card Contents */}
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-11 h-11 bg-[#021C2A]/60 border border-[#B0EDF9]/30 rounded-xl flex items-center justify-center">
-                    {plan.icon}
+            return (
+              <div
+                key={p.id}
+                className={`rounded-3xl p-8 border backdrop-blur-xl bg-[#04344C]/70 flex flex-col justify-between relative transition-all duration-300 ${p.accentClass}`}
+              >
+                {/* Popular Floating Badge */}
+                {isPro && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#B0EDF9] text-[#04344C] text-xs font-black uppercase tracking-wider rounded-full shadow-lg border border-white">
+                    ⭐ MOST POPULAR CHOICE
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white tracking-tight">{plan.name}</h3>
+                )}
+
+                <div>
+                  {/* Card Top Header */}
+                  <div className={`p-4 rounded-2xl border ${p.headerBg} flex items-center justify-between mb-6`}>
+                    <div className="flex items-center gap-3">
+                      <div className="p-2.5 bg-[#021C2A] rounded-xl border border-white/10">
+                        {p.icon}
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-black text-white">{p.name}</h3>
+                        <div className="text-[11px] text-slate-300 font-medium">{p.badge}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                    {p.description}
+                  </p>
+
+                  {/* Price Block */}
+                  <div className="mb-6 p-4 bg-[#021C2A]/60 rounded-2xl border border-white/5">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-4xl font-black text-white">${price}</span>
+                      <span className="text-xs text-slate-400 font-semibold">/ month</span>
+                    </div>
                     {billingCycle === 'yearly' && (
-                      <span className="text-xs text-[#B0EDF9] font-bold">{plan.savings}</span>
+                      <div className="text-[11px] font-bold text-emerald-400 mt-1">
+                        Billed annually (Saves ${(p.monthlyPrice - p.yearlyPrice) * 12}/year)
+                      </div>
                     )}
                   </div>
-                </div>
 
-                <p className="text-slate-300 text-sm leading-relaxed mb-6">
-                  {plan.description}
-                </p>
-
-                {/* Price Display */}
-                <div className="flex items-baseline gap-1.5 mb-8">
-                  <span className="text-4xl sm:text-5xl font-black text-white">
-                    ${billingCycle === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice}
-                  </span>
-                  <span className="text-slate-300 text-xs font-semibold">/month</span>
-                </div>
-
-                {/* Divider & Feature Bullet Points */}
-                <div className="h-px bg-[#B0EDF9]/20 mb-6" />
-                <ul className="space-y-3.5 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start text-slate-200">
-                      <Check className="w-4 h-4 text-[#B0EDF9] mr-2.5 mt-0.5 flex-shrink-0" />
-                      <span className="text-xs sm:text-sm font-medium">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* CTA button */}
-              <button
-                onClick={() => window.open('https://stratxcel.ai', '_blank')}
-                className={`relative z-10 w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] active:scale-95 ${plan.buttonStyle} flex items-center justify-center gap-2`}
-              >
-                <span>Select {plan.name}</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Feature Highlights Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 border-y border-[#B0EDF9]/20 mb-24">
-          {featuresList.map((item, idx) => (
-            <div key={idx} className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-[#04344C] border border-[#B0EDF9]/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                {item.icon}
-              </div>
-              <div>
-                <h4 className="text-base font-bold text-white mb-1.5">{item.title}</h4>
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">{item.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Testimonials */}
-        <div>
-          <div className="text-center mb-16 flex flex-col items-center">
-            <h3 className="text-3xl font-extrabold text-white tracking-tight mb-4">
-              Trusted by Executive Leaders
-            </h3>
-            <p className="text-slate-300 text-sm sm:text-base max-w-lg leading-relaxed">
-              Discover how founders and strategists leverage StratxceL to achieve rapid market growth.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((test, idx) => (
-              <div key={idx} className="glass-card bg-[#04344C]/50 border border-[#B0EDF9]/20 rounded-3xl p-6 relative overflow-hidden flex flex-col justify-between h-56 hover:border-[#B0EDF9]/40 transition-all">
-                <div className="flex items-center gap-1.5 mb-4 text-[#B0EDF9]">
-                  {[...Array(test.rating)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                  ))}
-                </div>
-                
-                <p className="text-slate-200 text-xs sm:text-sm leading-relaxed mb-6 italic">
-                  "{test.content}"
-                </p>
-
-                <div className="flex items-center gap-3">
-                  <img
-                    src={test.avatar}
-                    alt={test.name}
-                    className="w-9 h-9 rounded-full object-cover border border-[#B0EDF9]"
-                  />
-                  <div>
-                    <h5 className="text-xs font-bold text-white">{test.name}</h5>
-                    <p className="text-xs text-slate-300">{test.role}</p>
+                  {/* Features Bullet List */}
+                  <div className="space-y-3 mb-8">
+                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">What's Included:</div>
+                    {p.features.map((feat, fIdx) => (
+                      <div key={fIdx} className="flex items-start gap-2.5 text-xs text-slate-200 font-medium">
+                        <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isPro ? 'text-[#B0EDF9]' : 'text-emerald-400'}`} />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
+
+                {/* Plan Action CTA */}
+                <button
+                  onClick={() => window.open('https://stratxcel.ai', '_blank')}
+                  className={`w-full py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 ${p.buttonStyle}`}
+                >
+                  <span>Select {p.name}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
-            ))}
+            );
+          })}
+        </div>
+
+        {/* Enterprise Custom Banner */}
+        <div className="p-8 bg-[#04344C]/40 border border-[#B0EDF9]/20 rounded-3xl backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          <div>
+            <h3 className="text-xl font-bold text-white mb-1">Need a Custom Organization-Wide Deployment?</h3>
+            <p className="text-xs sm:text-sm text-slate-300">
+              We offer tailored SLAs, private cloud hosting, and dedicated advisory boards for holding companies.
+            </p>
           </div>
+          <button
+            onClick={() => window.open('https://stratxcel.ai', '_blank')}
+            className="px-6 py-3 bg-white/10 hover:bg-[#B0EDF9] hover:text-[#04344C] text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all whitespace-nowrap"
+          >
+            Contact Enterprise Advisory
+          </button>
         </div>
 
       </div>
