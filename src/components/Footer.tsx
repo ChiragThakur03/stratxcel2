@@ -156,7 +156,7 @@ const Footer: React.FC = () => {
             © 2026 StratxceL. All rights reserved.
           </p>
           <div className="flex items-center space-x-3 text-xs text-slate-400">
-            <span>Made with ❤️ by TRUSTING BRAINS</span>
+            <span>Made with ❤️ by CHIRAG BAHADUR</span>
           </div>
         </div>
       </div>
