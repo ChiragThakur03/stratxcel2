@@ -14,6 +14,8 @@ Transform your business strategy with AI-powered insights and expert human consu
 
 </div>
 
+<img width="959" height="448" alt="image" src="https://github.com/user-attachments/assets/92b1681f-81de-4480-91d6-c1c0dc76eea3" />
+
 ---
 
 ## 📋 Table of Contents
